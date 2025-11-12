@@ -1,11 +1,85 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Título da Página</title>
+    <title>trabalho</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
+    <nav class="navbar">
+        <div class="logo">
+            <a href="#">LOGO</a>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Sobre</a></li>
+            <li><a href="#">Serviços</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <header class="exemplo-conteudo">
+        <h1>Teste a Rolagem</h1>
+        <p>Role para baixo para ver a animação da navbar.</p>
+    </header>
+    <section class="exemplo-conteudo" style="height: 150vh; background-color: #f4f4f4;">
+        </section>
+
+    <script>
+        // --- Função para o Menu Mobile (Hambúrguer) ---
+const navSlide = () => {
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('.nav-links');
+    const navLinks = document.querySelectorAll('.nav-links li');
+    
+    // 1. Alternar (toggle) o Menu
+    burger.addEventListener('click', () => {
+        // Trazer o menu 'nav-links'
+        nav.classList.toggle('nav-active');
+        
+        // 2. Animar os Links (fade-in)
+        navLinks.forEach((link, index) => {
+            if (link.style.animation) {
+                link.style.animation = ''; // Reseta a animação se o menu for fechado
+            } else {
+                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+            }
+        });
+
+        // 3. Animação do Hambúrguer (para "X")
+        burger.classList.toggle('toggle');
+    });
+}
+
+// --- Função para a Navbar "Sticky" (Animação de Scroll) ---
+const stickyNav = () => {
+    const navbar = document.querySelector('.navbar');
+    
+    // Adiciona um "ouvinte" de evento de scroll
+    window.addEventListener('scroll', () => {
+        // Se a posição Y da rolagem for maior que 10 pixels
+        if (window.scrollY > 10) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+}
+
+// --- Chamar as funções ---
+navSlide();
+stickyNav();
+
+    </script>
 </body>
 </html>
