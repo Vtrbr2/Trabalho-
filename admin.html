@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Painel Admin - Avaliações</title>
   <link rel="stylesheet" href="ad/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
+  <!-- LOGIN -->
   <div class="admin-login" id="login">
     <h2>Login do Administrador</h2>
     <input type="text" id="user" placeholder="Usuário">
@@ -15,9 +17,33 @@
     <button id="loginBtn">Entrar</button>
   </div>
 
+  <!-- PAINEL -->
   <div class="admin-painel" id="painel" style="display:none;">
     <h2>Gerenciar Avaliações</h2>
+
+    <!-- Contadores -->
+    <div class="contadores">
+      <p>Total Ativas: <span id="totalAtivas">0</span></p>
+      <p>Total Excluídas: <span id="totalExcluidas">0</span></p>
+    </div>
+
+    <!-- Filtro / Busca -->
+    <div class="filtros">
+      <input type="text" id="buscaAvaliacoes" placeholder="Buscar por nome ou comentário...">
+    </div>
+
+    <!-- Lista de avaliações -->
     <div id="listaAvaliacoes"></div>
+  </div>
+
+  <!-- Modal de confirmação -->
+  <div id="modalConfirm" class="modal">
+    <div class="modal-content">
+      <i class="fa-solid fa-triangle-exclamation" style="color: #ffc107;"></i>
+      <p id="modalTexto">Tem certeza que deseja excluir esta avaliação?</p>
+      <button id="confirmSim">Sim</button>
+      <button id="confirmNao">Não</button>
+    </div>
   </div>
 
   <script type="module" src="js/admin.js"></script>
