@@ -48,7 +48,23 @@ body {
 .logo a:hover {
     color: #2563eb; /* Azul suave ao passar o mouse */
 }
+/* Logo com imagem */
+.logo img {
+    height: 55px; /* tamanho ideal para a navbar */
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
 
+/* Efeito ao rolar */
+.navbar.scrolled .logo img {
+    height: 45px; /* diminui levemente ao rolar */
+}
+
+/* Efeito hover opcional */
+.logo a:hover img {
+    transform: scale(1.05);
+    }
 /* ===== LINKS ===== */
 .nav-links {
     display: flex;
