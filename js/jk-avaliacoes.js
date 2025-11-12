@@ -93,38 +93,50 @@ fecharModal.addEventListener("click", () => {
   modal.style.display = "none";
 });
 
-// ======= Carrossel suave =======
+// ======= Carrossel infinito suave =======
 (function () {
   const carousel = document.getElementById("avaliacoesCarousel");
   if (!carousel) return;
 
-  let rafId = null;
-  let speed = 0.9; // velocidade do carrossel
   let isPaused = false;
+  let speed = 0.7; // velocidade do carrossel
+
+  // Clonar os cards para efeito infinito
+  function duplicateCards() {
+    const cards = Array.from(carousel.children);
+    cards.forEach(card => {
+      const clone = card.cloneNode(true);
+      carousel.appendChild(clone);
+    });
+  }
 
   function step() {
     if (!isPaused) {
       carousel.scrollLeft += speed;
-      const half = carousel.scrollWidth / 2;
-      if (carousel.scrollLeft >= half) carousel.scrollLeft -= half;
+
+      // Quando passar metade do scroll, volta para o início suavemente
+      if (carousel.scrollLeft >= carousel.scrollWidth / 2) {
+        carousel.scrollLeft -= carousel.scrollWidth / 2;
+      }
     }
-    rafId = requestAnimationFrame(step);
+    requestAnimationFrame(step);
   }
 
-  function start() {
+  // Pausar no hover ou toque
+  carousel.addEventListener("mouseenter", () => isPaused = true);
+  carousel.addEventListener("mouseleave", () => isPaused = false);
+  carousel.addEventListener("touchstart", () => isPaused = true, { passive: true });
+  carousel.addEventListener("touchend", () => isPaused = false, { passive: true });
+
+  // Iniciar carrossel após carregar avaliações
+  function initInfiniteCarousel() {
     if (carousel.children.length <= 2) return;
     if (!carousel.dataset.duplicated) {
-      carousel.innerHTML += carousel.innerHTML;
+      duplicateCards();
       carousel.dataset.duplicated = "true";
     }
-    if (rafId) cancelAnimationFrame(rafId);
-    rafId = requestAnimationFrame(step);
+    requestAnimationFrame(step);
   }
 
-  carousel.addEventListener("mouseenter", () => (isPaused = true));
-  carousel.addEventListener("mouseleave", () => (isPaused = false));
-  carousel.addEventListener("touchstart", () => (isPaused = true), { passive: true });
-  carousel.addEventListener("touchend", () => (isPaused = false), { passive: true });
-
-  window.__jk_carousel_reinit = start;
+  window.__jk_carousel_reinit = initInfiniteCarousel;
 })();
