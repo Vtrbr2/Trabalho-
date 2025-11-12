@@ -27,6 +27,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     transition: all 0.4s ease-out;
      justify-content: space-between; /* separa logo e menu */
+     padding: 0 25px; /* AUMENTE OU DIMINUA ESSE VALOR */
 }
 
 /* Navbar ao rolar */
