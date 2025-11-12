@@ -121,53 +121,24 @@
   <a href="obras.html" class="btn-vermais">Ver mais obras</a>
     </section>
 
-<!-- ===== Avaliações / Depoimentos (JK Construções) ===== -->
 <section id="jk-avaliacoes-section" class="jk-avaliacoes-section">
-  <div class="jk-container">
-    <h2> Avaliações de Clientes </h2>
-    <p class="jk-subtitulo">Veja o que nossos clientes dizem — e deixe sua avaliação!</p>
+  <h2>Avaliações dos Clientes</h2>
 
-    <div id="jk-avaliacoes-carousel" class="jk-avaliacoes-carousel" aria-live="polite">
-      <!-- cards serão injetados aqui pelo JS -->
-    </div>
+  <!-- Média -->
+  <div id="jk-media" style="margin-bottom:12px;font-weight:700;color:#333;"></div>
 
-    <div class="jk-avaliacoes-actions">
-      <button id="jk-openReviewBtn" class="jk-btn jk-btn-primary">Deixar Avaliação</button>
-      <a class="jk-btn jk-btn-outline" href="obras.html">Ver mais obras</a>
-    </div>
+  <!-- Lista -->
+  <div id="jk-avaliacoes-list" class="jk-avaliacoes-list"></div>
+
+  <!-- Form (nome, mensagem, botão). IDs obrigatórios: jk-nome, jk-mensagem, jk-btn-enviar -->
+  <div class="jk-avaliacao-form">
+    <input id="jk-nome" type="text" placeholder="Seu nome">
+    <textarea id="jk-mensagem" placeholder="Sua opinião"></textarea>
+
+    <!-- Aqui o script gera automaticamente o elemento com id="jk-stars" se não existir -->
+    <button id="jk-btn-enviar" class="jk-btn jk-btn-primary">Deixar Avaliação</button>
   </div>
 </section>
-
-<!-- Modal formulário -->
-<div id="jk-reviewModal" class="jk-modal jk-hidden" role="dialog" aria-modal="true" aria-labelledby="jk-modal-title">
-  <div class="jk-modal-content">
-    <button id="jk-closeModal" class="jk-modal-close" aria-label="Fechar">&times;</button>
-    <h3 id="jk-modal-title">Deixar Avaliação</h3>
-
-    <form id="jk-reviewForm" class="jk-review-form" autocomplete="off" novalidate>
-      <label for="jk-revNome">Nome</label>
-      <input type="text" id="jk-revNome" name="nome" required placeholder="Seu nome">
-
-      <label for="jk-revMsg">Mensagem</label>
-      <textarea id="jk-revMsg" name="mensagem" required placeholder="Conte sobre sua experiência"></textarea>
-
-      <label>Nota</label>
-      <div id="jk-stars" class="jk-stars" aria-label="Selecione a nota">
-        <span data-value="1" aria-hidden="true">☆</span>
-        <span data-value="2" aria-hidden="true">☆</span>
-        <span data-value="3" aria-hidden="true">☆</span>
-        <span data-value="4" aria-hidden="true">☆</span>
-        <span data-value="5" aria-hidden="true">☆</span>
-      </div>
-
-      <input type="hidden" id="jk-revEstrelas" name="estrelas" value="5">
-
-      <button type="submit" class="jk-btn jk-btn-primary">Enviar Avaliação</button>
-    </form>
-
-    <div id="jk-formMsg" class="jk-form-msg" role="status" aria-live="polite"></div>
-  </div>
-          </div>
   
     
     <footer class="footer">
