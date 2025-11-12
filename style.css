@@ -50,7 +50,7 @@ body {
 }
 /* Logo com imagem */
 .logo img {
-    height: 55px; /* tamanho ideal para a navbar */
+    height: 60px; /* tamanho ideal para a navbar */
     width: auto;
     object-fit: contain;
     transition: transform 0.3s ease;
