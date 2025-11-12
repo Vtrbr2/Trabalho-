@@ -121,6 +121,54 @@
   <a href="obras.html" class="btn-vermais">Ver mais obras</a>
     </section>
 
+
+
+    <!-- ===== Avaliações / Depoimentos (Front) ===== -->
+<section id="avaliacoes" class="avaliacoes-section">
+  <div class="container">
+    <h2>Avaliações de Clientes</h2>
+    <p class="subtitulo">Veja o que nossos clientes dizem — e deixe sua avaliação!</p>
+
+    <div class="avaliacoes-carousel" id="avaliacoesCarousel">
+      <!-- cards serão injetados aqui pelo JS -->
+    </div>
+
+    <div class="avaliacoes-actions">
+      <button class="btn-vermais" id="openReviewBtn">Deixar Avaliação</button>
+      <a class="btn-vermais" href="obras.html">Ver mais obras</a>
+    </div>
+  </div>
+</section>
+
+<!-- Modal formulário -->
+<div id="reviewModal" class="modal hidden">
+  <div class="modal-content">
+    <button class="modal-close" id="closeModal">&times;</button>
+    <h3>Deixar Avaliação</h3>
+    <form id="reviewForm">
+      <label>Nome</label>
+      <input type="text" id="revNome" required placeholder="Seu nome">
+
+      <label>Mensagem</label>
+      <textarea id="revMsg" required placeholder="Conte sobre sua experiência"></textarea>
+
+      <label>Nota</label>
+      <div class="stars" id="stars">
+        <span data-value="1">☆</span><span data-value="2">☆</span><span data-value="3">☆</span><span data-value="4">☆</span><span data-value="5">☆</span>
+      </div>
+
+      <input type="hidden" id="revEstrelas" value="5">
+
+      <button type="submit" class="btn-enviar">Enviar Avaliação</button>
+    </form>
+    <div id="formMsg" class="form-msg"></div>
+  </div>
+</div>
+
+
+
+
+  
     
     <footer class="footer">
   <div class="footer-content">
