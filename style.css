@@ -26,6 +26,7 @@ body {
     z-index: 100;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     transition: all 0.4s ease-out;
+     justify-content: space-between; /* separa logo e menu */
 }
 
 /* Navbar ao rolar */
@@ -113,6 +114,7 @@ body {
 .burger {
     display: none;
     cursor: pointer;
+margin-left: auto; /* empurra ele pro canto direito */
 }
 
 .burger div {
