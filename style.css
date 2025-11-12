@@ -357,15 +357,3 @@ margin-left: auto; /* empurra ele pro canto direito */
   border: 2px solid #eee;
 }
 
-/* Ajuste suave entre hero e serviços */
-.hero {
-  position: relative;
-  background: linear-gradient(to bottom, #eaeaea, #fff);
-  overflow: hidden;
-}
-
-.servicos {
-  background: #fff;
-  padding: 80px 20px;
-  text-align: center;
-}
