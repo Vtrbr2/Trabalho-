@@ -1,4 +1,4 @@
-/* Reset básico e fonte padrão */
+/* ===== RESET BÁSICO ===== */
 * {
     margin: 0;
     padding: 0;
@@ -7,40 +7,49 @@
 
 body {
     font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 50%, #e0f2fe 100%);
+    color: #2d2d2d;
+    overflow-x: hidden;
 }
 
-/* --- Estilos da Navbar --- */
+/* ===== NAVBAR ===== */
 .navbar {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    min-height: 10vh; /* Altura inicial */
-    background-color: #2c3e50; /* Cor de fundo inicial */
-    color: white;
+    min-height: 10vh;
+    background-color: #ffffff; /* Navbar branca */
+    color: #333;
     width: 100%;
-    position: fixed; /* Fixa no topo */
+    position: fixed;
     top: 0;
     z-index: 100;
-    transition: all 0.4s ease-out; /* Transição suave para a animação de scroll */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s ease-out;
 }
 
-/* --- Animação de Scroll (Navbar "Sticky") --- */
+/* Navbar ao rolar */
 .navbar.scrolled {
-    min-height: 8vh; /* Altura menor ao rolar */
-    background-color: #34495e; /* Cor mais escura ao rolar */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    min-height: 8vh;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* --- Logo --- */
+/* ===== LOGO ===== */
 .logo a {
-    color: white;
+    color: #6d28d9; /* Roxo vibrante */
     text-decoration: none;
-    font-size: 24px;
-    font-weight: 600;
-    letter-spacing: 2px;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
 }
 
-/* --- Links de Navegação (Desktop) --- */
+.logo a:hover {
+    color: #2563eb; /* Azul suave ao passar o mouse */
+}
+
+/* ===== LINKS ===== */
 .nav-links {
     display: flex;
     justify-content: space-around;
@@ -49,85 +58,94 @@ body {
 }
 
 .nav-links li {
-    position: relative; /* Necessário para a animação da linha */
+    position: relative;
 }
 
 .nav-links a {
-    color: white;
+    color: #2d2d2d;
     text-decoration: none;
-    letter-spacing: 1px;
-    font-weight: 400;
+    letter-spacing: 0.5px;
+    font-weight: 500;
     font-size: 16px;
     padding: 8px 4px;
+    transition: color 0.3s ease;
 }
 
-/* --- Animação 1: Linha "Hover" --- */
+/* Linha animada no hover */
 .nav-links a::after {
     content: '';
     display: block;
-    width: 0; /* Começa com largura 0 */
+    width: 0;
     height: 2px;
-    background: #3498db; /* Cor da linha */
+    background: linear-gradient(90deg, #6d28d9, #3b82f6);
     position: absolute;
     bottom: -5px;
     left: 0;
-    transition: width 0.3s ease; /* Transição da largura */
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #6d28d9;
 }
 
 .nav-links a:hover::after {
-    width: 100%; /* Largura 100% no hover */
+    width: 100%;
 }
 
-/* --- Menu Hambúrguer (Mobile) --- */
+/* ===== MENU MOBILE ===== */
 .burger {
-    display: none; /* Escondido no desktop */
+    display: none;
     cursor: pointer;
 }
 
 .burger div {
     width: 25px;
     height: 3px;
-    background-color: white;
+    background-color: #333;
     margin: 5px;
-    transition: all 0.3s ease; /* Transição para a animação do "X" */
+    transition: all 0.3s ease;
 }
 
-/* --- Media Query: Estilos para Telas Pequenas (Responsivo) --- */
+/* ===== RESPONSIVIDADE ===== */
 @media screen and (max-width: 768px) {
     .nav-links {
         position: absolute;
-        right: 0px;
-        height: 90vh; /* Ocupa quase a tela toda */
-        top: 10vh; /* Começa abaixo da navbar */
-        background-color: #2c3e50;
+        right: 0;
+        height: 90vh;
+        top: 10vh;
+        background: linear-gradient(180deg, #fff 0%, #f3e8ff 50%, #e0f2fe 100%);
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 60%;
-        transform: translateX(100%); /* Começa fora da tela */
-        transition: transform 0.5s ease-in;
+        width: 65%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in-out;
+        box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
     }
 
-    /* Ajuste para a navbar "scrolled" no mobile */
     .navbar.scrolled .nav-links {
         top: 8vh;
     }
 
     .nav-links li {
-        opacity: 0; /* Links começam invisíveis */
+        opacity: 0;
     }
 
     .burger {
-        display: block; /* Mostra o ícone do hambúrguer */
+        display: block;
+    }
+
+    .burger div {
+        background-color: #6d28d9;
     }
 }
 
-/* Classe Ativa (adicionada via JavaScript) */
+/* ===== CLASSE ATIVA (ABRIR MENU) ===== */
 .nav-active {
-    transform: translateX(0%); /* Traz o menu para a tela */
+    transform: translateX(0%);
 }
 
-/* Animação de "fade-in" para os links no mobile */
 @keyframes navLinkFade {
     from {
         opacity: 0;
@@ -135,11 +153,11 @@ body {
     }
     to {
         opacity: 1;
-        transform: translateX(0px);
+        transform: translateX(0);
     }
 }
 
-/* --- Animação 3: Hambúrguer para "X" --- */
+/* ===== ÍCONE BURGUER PARA "X" ===== */
 .toggle .line1 {
     transform: rotate(-45deg) translate(-5px, 6px);
 }
@@ -150,13 +168,26 @@ body {
     transform: rotate(45deg) translate(-5px, -6px);
 }
 
-/* --- Estilos do Conteúdo de Exemplo --- */
+/* ===== CONTEÚDO EXEMPLO ===== */
 .exemplo-conteudo {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #ecf0f1;
-    padding-top: 10vh; /* Para compensar a navbar fixa */
+    background: linear-gradient(135deg, #f5f3ff 0%, #e0f2fe 100%);
+    padding-top: 12vh;
+    text-align: center;
 }
+
+.exemplo-conteudo h1 {
+    font-size: 3rem;
+    color: #4c1d95;
+    margin-bottom: 15px;
+}
+
+.exemplo-conteudo p {
+    font-size: 1.2rem;
+    color: #475569;
+    max-width: 600px;
+    }
