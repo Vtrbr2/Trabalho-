@@ -44,115 +44,192 @@ stickyNav();
 
 
 
- type="module">
-  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+// js/jk-avaliacoes.js
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
-  // --------- CONFIG: altera aqui com suas chaves ----------
-  const SUPABASE_URL = 'https://gkkadwbselqwieaqpxzi.supabase.co';
-  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdra2Fkd2JzZWxxd2llYXFweHppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI5NjM2NTgsImV4cCI6MjA3ODUzOTY1OH0.sxvEHjDZ8SWiIqzHpUGwqqUUfVqzsAiartvyF2WBaZU';
-  // --------------------------------------------------------
+// ========== CONFIG (já informadas por você) ==========
+const SUPABASE_URL = 'https://gkkadwbselqwieaqpxzi.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdra2Fkd2JzZWxxd2llYXFweHppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI5NjM2NTgsImV4cCI6MjA3ODUzOTY1OH0.sxvEHjDZ8SWiIqzHpUGwqqUUfVqzsAiartvyF2WBaZU';
+// ======================================================
 
-  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-  const carouselEl = document.getElementById('avaliacoesCarousel');
-  const openReviewBtn = document.getElementById('openReviewBtn');
-  const reviewModal = document.getElementById('reviewModal');
-  const closeModal = document.getElementById('closeModal');
-  const reviewForm = document.getElementById('reviewForm');
-  const formMsg = document.getElementById('formMsg');
-  const starsEl = document.getElementById('stars');
-  const revEstrelas = document.getElementById('revEstrelas');
+// IDs / seletores usados (únicos)
+const SELECTORS = {
+  carousel: 'jk-avaliacoes-carousel',
+  openBtn: 'jk-openReviewBtn',
+  modal: 'jk-reviewModal',
+  closeBtn: 'jk-closeModal',
+  form: 'jk-reviewForm',
+  starsContainer: 'jk-stars',
+  estrelasInput: 'jk-revEstrelas',
+  nomeInput: 'jk-revNome',
+  msgInput: 'jk-revMsg',
+  formMsg: 'jk-formMsg'
+};
 
-  // estrelas interativas
-  starsEl.addEventListener('click', (e) => {
-    if (e.target.dataset && e.target.dataset.value) {
-      const v = Number(e.target.dataset.value);
-      revEstrelas.value = v;
-      Array.from(starsEl.children).forEach(s => {
-        s.classList.toggle('active', Number(s.dataset.value) <= v);
-      });
-    }
-  });
+// --- util: procura elemento e retorna null se não existir (protege outros scripts) ---
+const $ = (id) => document.getElementById(id) || null;
 
-  // abrir/fechar modal
-  openReviewBtn.addEventListener('click', () => reviewModal.classList.remove('hidden'));
-  closeModal.addEventListener('click', () => reviewModal.classList.add('hidden'));
-  reviewModal.addEventListener('click', (e) => { if (e.target === reviewModal) reviewModal.classList.add('hidden'); });
+// escape básico
+const escapeHtml = (s) =>
+  String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 
-  // buscar avaliações
-  async function fetchAvaliacoes() {
+async function fetchAvaliacoes() {
+  const carouselEl = $(SELECTORS.carousel);
+  if (!carouselEl) return;
+  try {
     const { data, error } = await supabase
       .from('avaliacoes')
       .select('*')
       .order('criado_at', { ascending: false })
       .limit(20);
-    if (error) { console.error(error); return; }
+
+    if (error) { console.error('Supabase fetch error', error); return; }
     renderAvaliacoes(data);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+function renderAvaliacoes(items = []) {
+  const carouselEl = $(SELECTORS.carousel);
+  if (!carouselEl) return;
+  carouselEl.innerHTML = '';
+  if (!items.length) {
+    const p = document.createElement('p');
+    p.textContent = 'Nenhuma avaliação publicada ainda. Seja o primeiro!';
+    p.style.color = '#6b7280';
+    carouselEl.appendChild(p);
+    return;
   }
 
-  // renderiza cards no carrossel
-  function renderAvaliacoes(items) {
-    carouselEl.innerHTML = '';
-    if (!items || items.length === 0) {
-      carouselEl.innerHTML = '<p>Nenhuma avaliação publicada ainda. Seja o primeiro!</p>';
-      return;
-    }
-    items.forEach(item => {
-      const card = document.createElement('div');
-      card.className = 'avaliacao-card';
-      card.innerHTML = `
-        <div class="avaliacao-stars">${'★'.repeat(item.estrelas)}${'☆'.repeat(5-item.estrelas)}</div>
-        <div class="avaliacao-msg">${escapeHtml(item.mensagem)}</div>
-        <div class="avaliacao-author">— ${escapeHtml(item.nome)}</div>
-      `;
-      carouselEl.appendChild(card);
+  items.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'jk-avaliacao-card';
+
+    const stars = document.createElement('div');
+    stars.className = 'jk-avaliacao-stars';
+    const filled = '★'.repeat(item.estrelas);
+    const empty = '☆'.repeat(5 - item.estrelas);
+    stars.textContent = filled + empty;
+
+    const msg = document.createElement('div');
+    msg.className = 'jk-avaliacao-msg';
+    msg.textContent = item.mensagem;
+
+    const author = document.createElement('div');
+    author.className = 'jk-avaliacao-author';
+    author.textContent = `— ${item.nome}`;
+
+    card.appendChild(stars);
+    card.appendChild(msg);
+    card.appendChild(author);
+    carouselEl.appendChild(card);
+  });
+}
+
+// --- modal & estrelas ---
+function initUI() {
+  const openBtn = $(SELECTORS.openBtn);
+  const modal = $(SELECTORS.modal);
+  const closeBtn = $(SELECTORS.closeBtn);
+  const form = $(SELECTORS.form);
+  const starsContainer = $(SELECTORS.starsContainer);
+  const estrelasInput = $(SELECTORS.estrelasInput);
+  const formMsg = $(SELECTORS.formMsg);
+
+  if (openBtn && modal) {
+    openBtn.addEventListener('click', () => modal.classList.remove('jk-hidden'));
+  }
+  if (closeBtn && modal) {
+    closeBtn.addEventListener('click', () => modal.classList.add('jk-hidden'));
+  }
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.add('jk-hidden');
     });
   }
 
-  // submit form
-  reviewForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const nome = document.getElementById('revNome').value.trim();
-    const mensagem = document.getElementById('revMsg').value.trim();
-    const estrelas = Number(document.getElementById('revEstrelas').value) || 5;
-
-    if (!nome || !mensagem) { formMsg.style.color = 'red'; formMsg.textContent = 'Preencha nome e mensagem.'; return; }
-
-    formMsg.textContent = 'Enviando...';
-    const { data, error } = await supabase.from('avaliacoes').insert([{ nome, mensagem, estrelas }]);
-    if (error) {
-      formMsg.style.color = 'red';
-      formMsg.textContent = 'Erro ao enviar. Tente novamente.';
-      console.error(error);
-      return;
-    }
-
-    formMsg.style.color = 'green';
-    formMsg.textContent = 'Obrigado! Avaliação enviada.';
-    reviewForm.reset();
-    // reset estrelas
-    revEstrelas.value = 5;
-    Array.from(starsEl.children).forEach(s => s.classList.remove('active'));
-    reviewModal.classList.add('hidden');
-
-    // atualizar lista (fetch)
-    fetchAvaliacoes();
-  });
-
-  // subscribe para mudanças em tempo real (recebe inserts)
-  const channel = supabase.channel('public:avaliacoes');
-  channel.on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'avaliacoes' }, payload => {
-    // adiciona novo item no topo
-    fetchAvaliacoes();
-  }).subscribe();
-
-  // escape simples para injeção
-  function escapeHtml(str) {
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;');
+  // estrelas clique (delegation)
+  if (starsContainer && estrelasInput) {
+    starsContainer.addEventListener('click', (e) => {
+      const v = e.target?.dataset?.value;
+      if (!v) return;
+      const n = Number(v);
+      estrelasInput.value = n;
+      Array.from(starsContainer.children).forEach(s => {
+        s.classList.toggle('jk-active', Number(s.dataset.value) <= n);
+      });
+    });
   }
 
-  // inicial
-  fetchAvaliacoes();
+  // submit
+  if (form) {
+    form.addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      if (!form) return;
+      const nomeEl = $(SELECTORS.nomeInput);
+      const msgEl = $(SELECTORS.msgInput);
+      const estrelasEl = $(SELECTORS.estrelasInput);
+      if (!nomeEl || !msgEl || !estrelasEl) return;
+      const nome = nomeEl.value.trim();
+      const mensagem = msgEl.value.trim();
+      const estrelas = Number(estrelasEl.value) || 5;
+
+      if (!nome || !mensagem) {
+        if (formMsg) { formMsg.style.color = 'red'; formMsg.textContent = 'Preencha nome e mensagem.'; }
+        return;
+      }
+
+      if (formMsg) { formMsg.style.color = 'inherit'; formMsg.textContent = 'Enviando...'; }
+      try {
+        const { data, error } = await supabase.from('avaliacoes').insert([{ nome, mensagem, estrelas }]);
+        if (error) {
+          if (formMsg) { formMsg.style.color = 'red'; formMsg.textContent = 'Erro ao enviar. Tente novamente.'; }
+          console.error(error);
+          return;
+        }
+        if (formMsg) { formMsg.style.color = 'green'; formMsg.textContent = 'Obrigado! Avaliação enviada.'; }
+        form.reset();
+        estrelasEl.value = 5;
+        if (starsContainer) Array.from(starsContainer.children).forEach(s => s.classList.remove('jk-active'));
+        // fechar modal com leve delay visual
+        setTimeout(() => {
+          const modalEl = $(SELECTORS.modal);
+          if (modalEl) modalEl.classList.add('jk-hidden');
+        }, 500);
+        // atualizar lista
+        fetchAvaliacoes();
+      } catch (err) {
+        console.error(err);
+        if (formMsg) { formMsg.style.color = 'red'; formMsg.textContent = 'Erro desconhecido.'; }
+      }
+    });
+  }
+}
+
+// --- realtime subscription (adiciona chamadas para atualizar) ---
+function initRealtime() {
+  try {
+    const channel = supabase.channel('public:avaliacoes');
+    channel.on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'avaliacoes' }, () => {
+      // busca novamente ao receber insert
+      fetchAvaliacoes();
+    }).subscribe().catch(err => {
+      // fallback: log (não crítico)
+      console.warn('Realtime subscribe error', err);
+    });
+  } catch (err) {
+    console.warn('Realtime init fail', err);
+  }
+}
+
+// --- init tudo depois do DOM carregar (protege outros scripts) ---
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    initUI(); fetchAvaliacoes(); initRealtime();
+  });
+} else {
+  initUI(); fetchAvaliacoes(); initRealtime();
+                                       }
