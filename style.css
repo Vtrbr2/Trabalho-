@@ -619,63 +619,146 @@ margin-left: auto; /* empurra ele pro canto direito */
 
 
 /* ===== JK AVALIAÇÕES ===== */
-.jk-avaliacoes-section { padding: 72px 5%; background: linear-gradient(180deg,#fff,#f3f7ff); text-align:center; }
-.jk-avaliacoes-section h2 { font-size:2.1rem; color:#222; margin-bottom:6px; }
-.jk-subtitulo { color:#6b7280; margin-bottom:22px; }
-
-/* carousel */
-.jk-avaliacoes-carousel { display:flex; gap:18px; justify-content:center; align-items:stretch; flex-wrap:nowrap; overflow-x:auto; scroll-snap-type:x mandatory; padding:12px 6px; max-width:1100px; margin:0 auto 18px; }
-.jk-avaliacoes-carousel::-webkit-scrollbar { height:8px; }
-.jk-avaliacoes-carousel::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius:8px; }
-
-/* card */
-.jk-avaliacao-card {
-  scroll-snap-align:center;
-  min-width: 280px;
-  max-width: 320px;
-  background: linear-gradient(180deg,#fff,#f8faff);
-  border-radius:14px;
-  padding:16px;
-  box-shadow:0 8px 20px rgba(13,30,70,0.06);
-  transition: transform .28s, box-shadow .28s;
-  text-align:left;
+/* ======== Estilos da seção de avaliações ======== */
+#avaliacoes {
+  background: #f8f8f8;
+  padding: 60px 20px;
+  text-align: center;
+  font-family: "Inter", sans-serif;
 }
-.jk-avaliacao-card:hover { transform: translateY(-6px); box-shadow:0 18px 40px rgba(13,30,70,0.08); }
-.jk-avaliacao-stars { color:#f5b334; margin-bottom:8px; font-size:18px; }
-.jk-avaliacao-msg { color:#334155; font-size:0.98rem; margin-bottom:12px; min-height:64px; }
-.jk-avaliacao-author { color:#475569; font-weight:700; font-size:0.95rem; }
 
-/* actions */
-.jk-avaliacoes-actions { margin-top:14px; display:flex; gap:12px; justify-content:center; }
-
-/* botões */
-.jk-btn { padding:10px 18px; border-radius:30px; font-weight:600; cursor:pointer; border:0; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; }
-.jk-btn-primary { background: linear-gradient(90deg,#6d28d9,#2563eb); color:#fff; }
-.jk-btn-outline { background:transparent; color:#2563eb; border:2px solid rgba(37,99,235,0.12); }
-
-/* modal */
-.jk-modal { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.45); z-index:4000; }
-.jk-hidden { display:none !important; }
-.jk-modal-content { width:95%; max-width:540px; background:#fff; border-radius:12px; padding:22px; position:relative; box-shadow:0 30px 80px rgba(13,30,70,0.3); }
-.jk-modal-close { position:absolute; right:14px; top:10px; background:transparent; border:0; font-size:26px; cursor:pointer; color:#666; }
-
-/* form */
-.jk-review-form input[type="text"], .jk-review-form textarea { width:100%; padding:10px 12px; border-radius:8px; border:1px solid #e6e9ef; margin-bottom:12px; font-size:0.95rem; }
-.jk-review-form textarea { min-height:110px; resize:vertical; }
-
-.jk-stars { display:inline-block; user-select:none; cursor:pointer; font-size:22px; color:#ccc; }
-.jk-stars span { margin-right:8px; transition: color .18s; }
-.jk-stars .jk-active { color:#f5b334; }
-
-/* form message */
-.jk-form-msg { margin-top:12px; color:green; font-weight:600; }
-
-/* responsivo */
-@media (max-width:880px) {
-  .jk-avaliacoes-carousel { gap:12px; padding:12px; }
-  .jk-avaliacao-card { min-width:240px; max-width:260px; }
+/* Título */
+#avaliacoes h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #333;
 }
-@media (max-width:480px) {
-  .jk-avaliacoes-actions { flex-direction:column; gap:8px; }
-  .jk-modal-content{ padding:16px; }
+
+/* Média de avaliações */
+#mediaAvaliacoes {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+/* ======== Formulário ======== */
+#formAvaliacao {
+  background: #fff;
+  max-width: 500px;
+  margin: 0 auto 50px;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+#formAvaliacao input,
+#formAvaliacao textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+#formAvaliacao input:focus,
+#formAvaliacao textarea:focus {
+  border-color: #007bff;
+}
+
+/* Estrelas de avaliação */
+.star-rating {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.star {
+  font-size: 28px;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.star:hover,
+.star.selected {
+  color: #ffb400;
+}
+
+/* Botão de envio */
+#formAvaliacao button {
+  width: 100%;
+  padding: 12px;
+  background: #007bff;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#formAvaliacao button:hover {
+  background: #0056b3;
+}
+
+/* ======== Lista de avaliações ======== */
+#listaAvaliacoes {
+  max-width: 800px;
+  margin: 0 auto;
+  display: grid;
+  gap: 20px;
+}
+
+.avaliacao {
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: left;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.avaliacao:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* Cabeçalho da avaliação */
+.avaliacao-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.avaliacao-nome {
+  font-weight: 600;
+  color: #333;
+  font-size: 1rem;
+}
+
+.avaliacao-estrelas {
+  color: #ffb400;
+  font-size: 1.1rem;
+}
+
+.avaliacao-comentario {
+  color: #555;
+  line-height: 1.5;
+}
+
+/* ======== Responsivo ======== */
+@media (max-width: 600px) {
+  #formAvaliacao {
+    padding: 20px;
+  }
+
+  .avaliacao {
+    padding: 15px;
+  }
     }
