@@ -370,3 +370,104 @@ margin-left: auto; /* empurra ele pro canto direito */
   height: auto;
   object-fit: contain;
 }
+/* --- Seção Sobre Nós --- */
+.sobre-nos {
+  background: linear-gradient(135deg, #f8f9fc, #eef2ff);
+  padding: 100px 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sobre-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 50px;
+  max-width: 1200px;
+}
+
+/* Imagem */
+.sobre-imagem {
+  flex: 1;
+  text-align: center;
+}
+
+.sobre-imagem img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s ease;
+}
+
+.sobre-imagem img:hover {
+  transform: scale(1.03);
+}
+
+/* Texto */
+.sobre-texto {
+  flex: 1;
+  color: #2c3e50;
+  animation: fadeInUp 1s ease both;
+}
+
+.sobre-texto h2 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #4a00e0;
+}
+
+.sobre-texto p {
+  line-height: 1.7;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* Botão */
+.btn-sobre {
+  display: inline-block;
+  margin-top: 15px;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-sobre:hover {
+  background: linear-gradient(135deg, #2575fc, #6a11cb);
+  transform: scale(1.05);
+}
+
+/* --- Responsividade --- */
+@media (max-width: 900px) {
+  .sobre-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .sobre-texto {
+    order: 2;
+  }
+
+  .sobre-imagem {
+    order: 1;
+  }
+}
+
+/* Animação de entrada */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+    }
