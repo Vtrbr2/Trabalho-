@@ -1,0 +1,162 @@
+/* Reset básico e fonte padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* --- Estilos da Navbar --- */
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 10vh; /* Altura inicial */
+    background-color: #2c3e50; /* Cor de fundo inicial */
+    color: white;
+    width: 100%;
+    position: fixed; /* Fixa no topo */
+    top: 0;
+    z-index: 100;
+    transition: all 0.4s ease-out; /* Transição suave para a animação de scroll */
+}
+
+/* --- Animação de Scroll (Navbar "Sticky") --- */
+.navbar.scrolled {
+    min-height: 8vh; /* Altura menor ao rolar */
+    background-color: #34495e; /* Cor mais escura ao rolar */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Logo --- */
+.logo a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+/* --- Links de Navegação (Desktop) --- */
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+    list-style: none;
+}
+
+.nav-links li {
+    position: relative; /* Necessário para a animação da linha */
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 8px 4px;
+}
+
+/* --- Animação 1: Linha "Hover" --- */
+.nav-links a::after {
+    content: '';
+    display: block;
+    width: 0; /* Começa com largura 0 */
+    height: 2px;
+    background: #3498db; /* Cor da linha */
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    transition: width 0.3s ease; /* Transição da largura */
+}
+
+.nav-links a:hover::after {
+    width: 100%; /* Largura 100% no hover */
+}
+
+/* --- Menu Hambúrguer (Mobile) --- */
+.burger {
+    display: none; /* Escondido no desktop */
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px;
+    transition: all 0.3s ease; /* Transição para a animação do "X" */
+}
+
+/* --- Media Query: Estilos para Telas Pequenas (Responsivo) --- */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        right: 0px;
+        height: 90vh; /* Ocupa quase a tela toda */
+        top: 10vh; /* Começa abaixo da navbar */
+        background-color: #2c3e50;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 60%;
+        transform: translateX(100%); /* Começa fora da tela */
+        transition: transform 0.5s ease-in;
+    }
+
+    /* Ajuste para a navbar "scrolled" no mobile */
+    .navbar.scrolled .nav-links {
+        top: 8vh;
+    }
+
+    .nav-links li {
+        opacity: 0; /* Links começam invisíveis */
+    }
+
+    .burger {
+        display: block; /* Mostra o ícone do hambúrguer */
+    }
+}
+
+/* Classe Ativa (adicionada via JavaScript) */
+.nav-active {
+    transform: translateX(0%); /* Traz o menu para a tela */
+}
+
+/* Animação de "fade-in" para os links no mobile */
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+/* --- Animação 3: Hambúrguer para "X" --- */
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.toggle .line2 {
+    opacity: 0;
+}
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* --- Estilos do Conteúdo de Exemplo --- */
+.exemplo-conteudo {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ecf0f1;
+    padding-top: 10vh; /* Para compensar a navbar fixa */
+}
