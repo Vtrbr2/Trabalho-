@@ -121,27 +121,264 @@
   <a href="obras.html" class="btn-vermais">Ver mais obras</a>
     </section>
 
+<!-- ==================== AVALIAÇÕES ==================== -->
+<section class="avaliacoes">
+  <h2>O que dizem nossos clientes</h2>
 
-<section id="avaliacoes">
-  <h2>Avaliações dos Clientes</h2>
+  <div class="avaliacoes-carousel" id="avaliacoesCarousel">
+    <!-- As avaliações serão carregadas aqui -->
+  </div>
 
-  <div id="listaAvaliacoes">Carregando avaliações...</div>
+  <button id="abrirAvaliacaoBtn" class="btn-avaliar">Deixar Avaliação</button>
 
-  <div class="form-avaliacao">
-    <input type="text" id="nome" placeholder="Seu nome">
-    <textarea id="mensagem" placeholder="Sua opinião"></textarea>
+  <!-- Modal de envio -->
+  <div id="avaliacaoModal" class="avaliacao-modal hidden">
+    <div class="avaliacao-modal-content">
+      <h3>Deixe sua avaliação</h3>
+      <form id="avaliacaoForm">
+        <input type="text" id="nome" placeholder="Seu nome" required>
+        <textarea id="mensagem" placeholder="Escreva sua opinião..." required></textarea>
 
-    <div class="estrelas">
-      <label><input type="radio" name="estrela" value="1">⭐</label>
-      <label><input type="radio" name="estrela" value="2">⭐⭐</label>
-      <label><input type="radio" name="estrela" value="3">⭐⭐⭐</label>
-      <label><input type="radio" name="estrela" value="4">⭐⭐⭐⭐</label>
-      <label><input type="radio" name="estrela" value="5">⭐⭐⭐⭐⭐</label>
+        <div class="avaliacao-estrelas" id="estrelas">
+          <span data-value="1">★</span>
+          <span data-value="2">★</span>
+          <span data-value="3">★</span>
+          <span data-value="4">★</span>
+          <span data-value="5">★</span>
+        </div>
+
+        <button type="submit">Enviar</button>
+      </form>
     </div>
+  </div>
 
-    <button id="btnAvaliar">Deixar Avaliação</button>
+  <!-- Modal de sucesso -->
+  <div id="modalSucesso" class="modal-sucesso hidden">
+    <div class="modal-sucesso-content">
+      <h3>✅ Obrigado pela avaliação!</h3>
+      <p>Seu comentário foi enviado com sucesso.</p>
+    </div>
   </div>
 </section>
+
+<style>
+/* --- Seção Avaliações --- */
+.avaliacoes {
+  text-align: center;
+  padding: 60px 20px;
+  background: #f9f9f9;
+}
+
+.avaliacoes h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #222;
+}
+
+/* --- Carrossel --- */
+.avaliacoes-carousel {
+  display: flex;
+  overflow: hidden;
+  gap: 20px;
+  animation: slideLeft 25s linear infinite;
+  padding: 10px 0;
+}
+
+@keyframes slideLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.avaliacao-card {
+  min-width: 250px;
+  max-width: 300px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  padding: 20px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.avaliacao-card:hover {
+  transform: scale(1.03);
+}
+
+.avaliacao-estrelas {
+  color: #ffc107;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.avaliacao-card p {
+  font-size: 15px;
+  color: #555;
+}
+
+.avaliacao-card small {
+  display: block;
+  margin-top: 10px;
+  color: #777;
+}
+
+/* --- Botão Avaliar --- */
+.btn-avaliar {
+  margin-top: 30px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.btn-avaliar:hover {
+  background: #0056d2;
+}
+
+/* --- Modal de Avaliação --- */
+.avaliacao-modal,
+.modal-sucesso {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.hidden {
+  display: none;
+}
+
+.avaliacao-modal-content,
+.modal-sucesso-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  animation: popIn 0.4s ease;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.avaliacao-modal-content input,
+.avaliacao-modal-content textarea {
+  width: 100%;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 15px;
+  outline: none;
+}
+
+.avaliacao-modal-content button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.avaliacao-modal-content button:hover {
+  background: #0056d2;
+}
+
+/* --- Estrelas clicáveis --- */
+#estrelas span {
+  font-size: 28px;
+  cursor: pointer;
+  color: #ccc;
+  transition: 0.2s;
+}
+
+#estrelas span.ativo {
+  color: #ffc107;
+  transform: scale(1.2);
+}
+</style>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+  import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBF_-yFhm5X3Dy-jd84dHyU4UT5Uta-XhE",
+    authDomain: "avaliacoes-20599.firebaseapp.com",
+    projectId: "avaliacoes-20599",
+    storageBucket: "avaliacoes-20599.firebasestorage.app",
+    messagingSenderId: "1003621715829",
+    appId: "1:1003621715829:web:eb82bed77a69e570324d3c"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+  const refAvaliacoes = ref(db, 'avaliacoes');
+
+  const modal = document.getElementById('avaliacaoModal');
+  const btnAbrir = document.getElementById('abrirAvaliacaoBtn');
+  const form = document.getElementById('avaliacaoForm');
+  const estrelasEl = document.getElementById('estrelas');
+  const modalSucesso = document.getElementById('modalSucesso');
+  const carousel = document.getElementById('avaliacoesCarousel');
+  let estrelas = 0;
+
+  // Abrir / Fechar Modal
+  btnAbrir.onclick = () => modal.classList.remove('hidden');
+  modal.onclick = (e) => { if (e.target === modal) modal.classList.add('hidden'); };
+
+  // Seleção de estrelas
+  estrelasEl.addEventListener('click', (e) => {
+    if (!e.target.dataset.value) return;
+    estrelas = Number(e.target.dataset.value);
+    estrelasEl.querySelectorAll('span').forEach(s => s.classList.remove('ativo'));
+    for (let i = 0; i < estrelas; i++) {
+      estrelasEl.children[i].classList.add('ativo');
+    }
+  });
+
+  // Enviar avaliação
+  form.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    const nome = document.getElementById('nome').value.trim();
+    const mensagem = document.getElementById('mensagem').value.trim();
+    if (!nome || !mensagem || estrelas === 0) return alert("Preencha todos os campos e selecione as estrelas.");
+
+    await push(refAvaliacoes, { nome, mensagem, estrelas });
+    form.reset();
+    estrelas = 0;
+    estrelasEl.querySelectorAll('span').forEach(s => s.classList.remove('ativo'));
+    modal.classList.add('hidden');
+    modalSucesso.classList.remove('hidden');
+    setTimeout(() => modalSucesso.classList.add('hidden'), 2000);
+  });
+
+  // Mostrar avaliações em carrossel
+  onValue(refAvaliacoes, (snapshot) => {
+    carousel.innerHTML = '';
+    snapshot.forEach(item => {
+      const val = item.val();
+      const card = document.createElement('div');
+      card.className = 'avaliacao-card';
+      card.innerHTML = `
+        <div class="avaliacao-estrelas">${'★'.repeat(val.estrelas)}${'☆'.repeat(5 - val.estrelas)}</div>
+        <p>${val.mensagem}</p>
+        <small>— ${val.nome}</small>
+      `;
+      carousel.appendChild(card);
+    });
+  });
+    </script>
     
     <footer class="footer">
   <div class="footer-content">
@@ -171,72 +408,6 @@
     
 
 
-    <script src="js/jk.js"></script>
-    <!-- Firebase SDKs -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
-  import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js";
 
-  // Configuração do seu Firebase
-  const firebaseConfig = {
-    apiKey: "AIzaSyBF_-yFhm5X3Dy-jd84dHyU4UT5Uta-XhE",
-    authDomain: "avaliacoes-20599.firebaseapp.com",
-    databaseURL: "https://avaliacoes-20599-default-rtdb.firebaseio.com",
-    projectId: "avaliacoes-20599",
-    storageBucket: "avaliacoes-20599.firebasestorage.app",
-    messagingSenderId: "1003621715829",
-    appId: "1:1003621715829:web:eb82bed77a69e570324d3c"
-  };
-
-  // Inicializar Firebase e Banco
-  const app = initializeApp(firebaseConfig);
-  const db = getDatabase(app);
-
-  // Envio de avaliação
-  const btn = document.getElementById("btnAvaliar");
-  const nomeEl = document.getElementById("nome");
-  const msgEl = document.getElementById("mensagem");
-  const lista = document.getElementById("listaAvaliacoes");
-
-  btn.addEventListener("click", async () => {
-    const nome = nomeEl.value.trim();
-    const mensagem = msgEl.value.trim();
-    const estrelas = document.querySelector('input[name="estrela"]:checked')?.value;
-
-    if (!nome || !mensagem || !estrelas) {
-      alert("Preencha todos os campos e selecione as estrelas ⭐");
-      return;
-    }
-
-    await push(ref(db, "avaliacoes"), {
-      nome,
-      mensagem,
-      estrelas: parseInt(estrelas),
-      data: new Date().toISOString()
-    });
-
-    nomeEl.value = "";
-    msgEl.value = "";
-    document.querySelectorAll('input[name="estrela"]').forEach(e => e.checked = false);
-    alert("Avaliação enviada!");
-  });
-
-  // Carregar avaliações em tempo real
-  const avaliacoesRef = ref(db, "avaliacoes");
-  onValue(avaliacoesRef, (snapshot) => {
-    lista.innerHTML = "";
-    snapshot.forEach((child) => {
-      const a = child.val();
-      const div = document.createElement("div");
-      div.classList.add("avaliacao");
-      div.innerHTML = `
-        <strong>${a.nome}</strong> — ${"⭐".repeat(a.estrelas)}<br>
-        <p>${a.mensagem}</p>
-        <small>${new Date(a.data).toLocaleDateString()}</small>
-      `;
-      lista.appendChild(div);
-    });
-  });
-</script>
 </body>
 </html>
