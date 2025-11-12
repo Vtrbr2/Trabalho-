@@ -62,19 +62,20 @@ enviarBtn.addEventListener("click", () => {
     return;
   }
 
-  push(refAvaliacoes, {
-    nome: "Cliente",
-    comentario,
-    estrelas: estrelasSelecionadas,
-    timestamp: Date.now()
-  });
+  const nome = document.getElementById("nomeInput").value.trim() || "Anônimo";
 
-  comentarioInput.value = "";
-  starsInput.querySelectorAll("i").forEach((e) => e.classList.remove("active"));
-  estrelasSelecionadas = 0;
-
-  abrirModal();
+push(refAvaliacoes, {
+  nome,
+  comentario,
+  estrelas: estrelasSelecionadas,
+  timestamp: Date.now()
 });
+
+  document.getElementById("nomeInput").value = "";
+comentarioInput.value = "";
+starsInput.querySelectorAll("i").forEach((e) => e.classList.remove("active"));
+estrelasSelecionadas = 0;
+abrirModal();
 
 // ======= Modal =======
 const modal = document.getElementById("modalAvaliacao");
