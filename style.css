@@ -340,3 +340,32 @@ margin-left: auto; /* empurra ele pro canto direito */
   font-size: 1rem;
   line-height: 1.5;
     }
+/*logo seçoes*/
+.logo-overlay {
+  position: relative;
+  margin-top: -60px; /* puxa pra cima pra sobrepor */
+  text-align: center;
+  z-index: 10;
+}
+
+.logo-overlay img {
+  background: #fff;
+  border-radius: 50%;
+  padding: 15px;
+  width: 120px; /* ajuste o tamanho */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  border: 2px solid #eee;
+}
+
+/* Ajuste suave entre hero e serviços */
+.hero {
+  position: relative;
+  background: linear-gradient(to bottom, #eaeaea, #fff);
+  overflow: hidden;
+}
+
+.servicos {
+  background: #fff;
+  padding: 80px 20px;
+  text-align: center;
+}
