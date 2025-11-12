@@ -187,26 +187,101 @@ margin-left: auto; /* empurra ele pro canto direito */
     transform: rotate(45deg) translate(-5px, -6px);
 }
 
-/* ===== CONTEÚDO EXEMPLO ===== */
-.exemplo-conteudo {
-    height: 100vh;
-    display: flex;
+/* ===== hero ===== */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10vh 8%;
+  background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 50%, #e0f2fe 100%);
+  min-height: 90vh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Efeito decorativo no fundo */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(109,40,217,0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: pulse 6s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+@keyframes pulse {
+  from { transform: scale(1); opacity: 0.7; }
+  to { transform: scale(1.2); opacity: 0.3; }
+}
+
+.hero-content {
+  z-index: 1;
+  max-width: 550px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  color: #1e1e1e;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  color: #4b5563;
+  margin-bottom: 30px;
+}
+
+.btn-hero {
+  display: inline-block;
+  background: linear-gradient(90deg, #6d28d9, #3b82f6);
+  color: #fff;
+  padding: 12px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-hero:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(109,40,217,0.4);
+}
+
+/* Imagem da direita */
+.hero-image {
+  flex: 1;
+  text-align: right;
+  z-index: 1;
+}
+
+.hero-image img {
+  width: 85%;
+  max-width: 500px;
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Responsivo */
+@media (max-width: 850px) {
+  .hero {
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #f5f3ff 0%, #e0f2fe 100%);
-    padding-top: 12vh;
     text-align: center;
-}
+    padding: 12vh 5%;
+  }
 
-.exemplo-conteudo h1 {
-    font-size: 3rem;
-    color: #4c1d95;
-    margin-bottom: 15px;
+  .hero-image img {
+    margin-top: 40px;
+    width: 100%;
+    max-width: 400px;
+  }
 }
-
-.exemplo-conteudo p {
-    font-size: 1.2rem;
-    color: #475569;
-    max-width: 600px;
-    }
