@@ -145,3 +145,21 @@
   border-radius: 8px;
   cursor: pointer;
 }
+/* ===== Campo de nome ===== */
+#nomeInput {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+#nomeInput:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
