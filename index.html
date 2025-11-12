@@ -121,25 +121,27 @@
   <a href="obras.html" class="btn-vermais">Ver mais obras</a>
     </section>
 
-<section id="jk-avaliacoes-section" class="jk-avaliacoes-section">
+
+<section id="avaliacoes">
   <h2>Avaliações dos Clientes</h2>
 
-  <!-- Média -->
-  <div id="jk-media" style="margin-bottom:12px;font-weight:700;color:#333;"></div>
+  <div id="listaAvaliacoes">Carregando avaliações...</div>
 
-  <!-- Lista -->
-  <div id="jk-avaliacoes-list" class="jk-avaliacoes-list"></div>
+  <div class="form-avaliacao">
+    <input type="text" id="nome" placeholder="Seu nome">
+    <textarea id="mensagem" placeholder="Sua opinião"></textarea>
 
-  <!-- Form (nome, mensagem, botão). IDs obrigatórios: jk-nome, jk-mensagem, jk-btn-enviar -->
-  <div class="jk-avaliacao-form">
-    <input id="jk-nome" type="text" placeholder="Seu nome">
-    <textarea id="jk-mensagem" placeholder="Sua opinião"></textarea>
+    <div class="estrelas">
+      <label><input type="radio" name="estrela" value="1">⭐</label>
+      <label><input type="radio" name="estrela" value="2">⭐⭐</label>
+      <label><input type="radio" name="estrela" value="3">⭐⭐⭐</label>
+      <label><input type="radio" name="estrela" value="4">⭐⭐⭐⭐</label>
+      <label><input type="radio" name="estrela" value="5">⭐⭐⭐⭐⭐</label>
+    </div>
 
-    <!-- Aqui o script gera automaticamente o elemento com id="jk-stars" se não existir -->
-    <button id="jk-btn-enviar" class="jk-btn jk-btn-primary">Deixar Avaliação</button>
+    <button id="btnAvaliar">Deixar Avaliação</button>
   </div>
 </section>
-  
     
     <footer class="footer">
   <div class="footer-content">
@@ -168,9 +170,73 @@
     </footer>
     
 
-<!-- Sistema de avaliações -->
-<script type="module" src="js/jk-avaliacoes.js"></script>
-<!--normal-->
-    <script src="js/jk.js"></script>   
+
+    <script src="js/jk.js"></script>
+    <!-- Firebase SDKs -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+  import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js";
+
+  // Configuração do seu Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyBF_-yFhm5X3Dy-jd84dHyU4UT5Uta-XhE",
+    authDomain: "avaliacoes-20599.firebaseapp.com",
+    databaseURL: "https://avaliacoes-20599-default-rtdb.firebaseio.com",
+    projectId: "avaliacoes-20599",
+    storageBucket: "avaliacoes-20599.firebasestorage.app",
+    messagingSenderId: "1003621715829",
+    appId: "1:1003621715829:web:eb82bed77a69e570324d3c"
+  };
+
+  // Inicializar Firebase e Banco
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+  // Envio de avaliação
+  const btn = document.getElementById("btnAvaliar");
+  const nomeEl = document.getElementById("nome");
+  const msgEl = document.getElementById("mensagem");
+  const lista = document.getElementById("listaAvaliacoes");
+
+  btn.addEventListener("click", async () => {
+    const nome = nomeEl.value.trim();
+    const mensagem = msgEl.value.trim();
+    const estrelas = document.querySelector('input[name="estrela"]:checked')?.value;
+
+    if (!nome || !mensagem || !estrelas) {
+      alert("Preencha todos os campos e selecione as estrelas ⭐");
+      return;
+    }
+
+    await push(ref(db, "avaliacoes"), {
+      nome,
+      mensagem,
+      estrelas: parseInt(estrelas),
+      data: new Date().toISOString()
+    });
+
+    nomeEl.value = "";
+    msgEl.value = "";
+    document.querySelectorAll('input[name="estrela"]').forEach(e => e.checked = false);
+    alert("Avaliação enviada!");
+  });
+
+  // Carregar avaliações em tempo real
+  const avaliacoesRef = ref(db, "avaliacoes");
+  onValue(avaliacoesRef, (snapshot) => {
+    lista.innerHTML = "";
+    snapshot.forEach((child) => {
+      const a = child.val();
+      const div = document.createElement("div");
+      div.classList.add("avaliacao");
+      div.innerHTML = `
+        <strong>${a.nome}</strong> — ${"⭐".repeat(a.estrelas)}<br>
+        <p>${a.mensagem}</p>
+        <small>${new Date(a.data).toLocaleDateString()}</small>
+      `;
+      lista.appendChild(div);
+    });
+  });
+</script>
 </body>
 </html>
