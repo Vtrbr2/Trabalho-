@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel Admin - Avaliações</title>
+  <link rel="stylesheet" href="ad/style.css">
+</head>
+<body>
+
+  <div class="admin-login" id="login">
+    <h2>Login do Administrador</h2>
+    <input type="text" id="user" placeholder="Usuário">
+    <input type="password" id="pass" placeholder="Senha">
+    <button id="loginBtn">Entrar</button>
+  </div>
+
+  <div class="admin-painel" id="painel" style="display:none;">
+    <h2>Gerenciar Avaliações</h2>
+    <div id="listaAvaliacoes"></div>
+  </div>
+
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>
