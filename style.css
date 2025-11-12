@@ -471,3 +471,73 @@ margin-left: auto; /* empurra ele pro canto direito */
     transform: translateY(0);
   }
     }
+/* --- Seção Portfólio --- */
+.portfolio {
+  text-align: center;
+  padding: 100px 20px;
+  background: linear-gradient(180deg, #f9f9ff, #eef2ff);
+}
+
+.portfolio h2 {
+  font-size: 2.4em;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.portfolio .subtitulo {
+  color: #6c63ff;
+  font-weight: 500;
+  margin-bottom: 40px;
+}
+
+/* --- Carrossel --- */
+.carousel {
+  overflow: hidden;
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  animation: scroll 20s linear infinite;
+}
+
+.carousel-track img {
+  width: 100%;
+  max-width: 250px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 0 10px;
+  transition: transform 0.4s ease;
+}
+
+.carousel-track img:hover {
+  transform: scale(1.05);
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* --- Botão Ver Mais --- */
+.btn-vermais {
+  display: inline-block;
+  background: linear-gradient(90deg, #6c63ff, #0099ff);
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-vermais:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
+    }
