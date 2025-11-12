@@ -99,7 +99,7 @@ fecharModal.addEventListener("click", () => {
   if (!carousel) return;
 
   let rafId = null;
-  let speed = 0.7; // velocidade do carrossel
+  let speed = 0.9; // velocidade do carrossel
   let isPaused = false;
 
   function step() {
