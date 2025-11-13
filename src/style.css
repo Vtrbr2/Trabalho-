@@ -721,3 +721,68 @@ margin-left: auto; /* empurra ele pro canto direito */
   display: block;
   margin-bottom: 5px;
 }
+
+/* Process Timeline */
+        .process-timeline {
+            margin-bottom: 100px;
+        }
+
+        .section-subtitle {
+            font-size: 48px;
+            font-weight: 100;
+            text-align: center;
+            margin-bottom: 60px;
+            letter-spacing: -1px;
+        }
+
+        .timeline-container {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #000;
+            z-index: 0;
+        }
+
+        .timeline-item {
+            position: relative;
+            text-align: center;
+            flex: 1;
+        }
+
+        .timeline-dot {
+            width: 40px;
+            height: 40px;
+            background: #fff;
+            border: 2px solid #000;
+            margin: 0 auto 30px;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-dot {
+            background: #000;
+            transform: rotate(45deg);
+        }
+
+        .timeline-content h4 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .timeline-content p {
+            font-size: 14px;
+            color: #666;
+        }
