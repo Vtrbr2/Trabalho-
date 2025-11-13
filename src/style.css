@@ -723,13 +723,12 @@ margin-left: auto; /* empurra ele pro canto direito */
 }
 
 /* Process Timeline */
-       .vitor {
-  background: none !important;
+      section.vitor,
+section.vitor::before,
+section.vitor::after {
   background: linear-gradient(135deg, #f8f9fc, #eef2ff) !important;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
 }
+
 
 
 .process-timeline {
