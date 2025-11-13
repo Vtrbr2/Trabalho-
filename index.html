@@ -178,9 +178,12 @@
     <i class="fa-regular fa-star" data-value="5"></i>
   </div>
   <textarea id="comentarioInput" placeholder="Escreva seu comentário..."></textarea>
-<label for="avatarInput" style="display:block;margin-top:10px;">Foto de perfil (opcional):</label>
-<input id="avatarInput" type="file" accept="image/*" style="margin-bottom:10px;">
-<div id="avatarPreview" style="margin-top:8px;"></div>      <button id="enviarAvaliacao">Enviar Avaliação</button>
+<!-- ================= upload de avatar (opcional) ================= -->
+<label for="avatarInput" style="display:block; margin-top:10px; font-size:14px;">Foto de perfil (opcional)</label>
+<input id="avatarInput" type="file" accept="image/*" style="display:block; margin:6px 0;">
+<div id="avatarPreview" style="margin-top:8px;"></div>
+<!-- =============================================================== -->
+      <button id="enviarAvaliacao">Enviar Avaliação</button>
   </div>
 
   <!-- Modal -->
@@ -227,6 +230,7 @@
     
 <script type="module" src="js/jk-avaliacoes.js"></script>
 <script type="module" src="js/jk-upload.js"></script>
+<script src="js/jk-upload-preview.js"></script>
 <script src="js/jk.js"></script>
 
 </body>
