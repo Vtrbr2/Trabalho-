@@ -6,7 +6,7 @@ const firebaseConfig = {
   authDomain: "avaliacoes-20599.firebaseapp.com",
   databaseURL: "https://avaliacoes-20599-default-rtdb.firebaseio.com/",
   projectId: "avaliacoes-20599",
-  storageBucket: "avaliacoes-20599.appspot.com",  messagingSenderId: "1003621715829",
+ storageBucket: "avaliacoes-20599.firebasestorage.app",
   appId: "1:1003621715829:web:eb82bed77a69e570324d3c"
 };
 
@@ -26,7 +26,6 @@ onValue(refAvaliacoes, (snapshot) => {
     card.classList.add("avaliacao-card");
 
     card.innerHTML = `
-  ${dados.foto ? `<img class="foto-perfil" src="${dados.foto}" alt="Foto de ${dados.nome}">` : ""}
   <div class="avaliacao-estrelas">${"★".repeat(dados.estrelas)}</div>
   <h4>${dados.nome || "Anônimo"}</h4>
   <p>${dados.comentario}</p>
@@ -72,9 +71,10 @@ push(refAvaliacoes, {
   nome,
   comentario,
   estrelas: estrelasSelecionadas,
-  foto,
   timestamp: Date.now()
 });
+
+abrirModal();
 
 localStorage.removeItem("avatarUrl");
 
