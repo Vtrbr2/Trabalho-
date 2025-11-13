@@ -67,12 +67,17 @@ enviarBtn.addEventListener("click", () => {
     return;
   }
 
-  push(refAvaliacoes, {
-    nome,
-    comentario,
-    estrelas: estrelasSelecionadas,
-    timestamp: Date.now()
-  });
+const foto = localStorage.getItem("avatarUrl") || "";
+
+push(refAvaliacoes, {
+  nome,
+  comentario,
+  estrelas: estrelasSelecionadas,
+  foto,
+  timestamp: Date.now()
+});
+
+localStorage.removeItem("avatarUrl");
 
   // Limpar campos e resetar estrelas
   nomeInput.value = "";
