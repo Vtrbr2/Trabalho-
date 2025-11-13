@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Painel Admin - Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#eef2ff,#f7f3ff);min-height:100vh;display:flex;align-items:center;justify-content:center}
+    .card{width:360px;background:#fff;padding:28px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.08);text-align:center}
+    h2{margin-bottom:12px;color:#2d2d2d}
+    label{display:block;text-align:left;margin:8px 0 6px;color:#444;font-size:14px}
+    input{width:100%;padding:10px;border:1px solid #e6e6f0;border-radius:8px;margin-bottom:10px;font-size:15px}
+    button{width:100%;padding:10px;background:linear-gradient(90deg,#6d28d9,#3b82f6);color:#fff;border:0;border-radius:10px;font-weight:600;cursor:pointer;margin-top:8px}
+    .msg{margin-top:10px;color:#e11; font-size:14px; display:none}
+    .small{font-size:13px;color:#666;margin-top:8px}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Login Admin</h2>
+    <form id="adminLoginForm">
+      <label for="user">Usuário</label>
+      <input id="user" name="user" placeholder="@jk" required autocomplete="username" />
+      <label for="pass">Senha</label>
+      <input id="pass" name="pass" type="password" placeholder="••••••••" required autocomplete="current-password" />
+      <button type="submit">Entrar</button>
+      <div class="msg" id="loginMsg"></div>
+      <div class="small">Área restrita — apenas admins</div>
+    </form>
+  </div>
+
+  <!-- bcryptjs (não-module) - precisa estar antes do module script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
+
+  <!-- supabase client (ESM) e código do login (module) -->
+  <script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+    // ====== CONFIGURE AQUI ======
+    const SUPABASE_URL = 'https://gkkadwbselqwieaqpxzi.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdra2Fkd2JzZWxxd2llYXFweHppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI5NjM2NTgsImV4cCI6MjA3ODUzOTY1OH0.sxvEHjDZ8SWiIqzHpUGwqqUUfVqzsAiartvyF2WBaZU';
+    // =============================
+
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    const form = document.getElementById('adminLoginForm');
+    const loginMsg = document.getElementById('loginMsg');
+
+    form.addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      loginMsg.style.display = 'none';
+      const user = document.getElementById('user').value.trim();
+      const pass = document.getElementById('pass').value;
+
+      if (!user || !pass) {
+        showMsg('Preencha usuário e senha.');
+        return;
+      }
+
+      showMsg('Validando...', '#2563eb');
+
+      try {
+        // consulta o hash do usuário (retorna apenas o hash)
+        const { data, error } = await supabase
+          .from('admins')
+          .select('senha_hash')
+          .eq('usuario', user)
+          .limit(1)
+          .maybeSingle();
+
+        if (error) throw error;
+
+        if (!data || !data.senha_hash) {
+          showMsg('Usuário não encontrado.', '#e11');
+          return;
+        }
+
+        // bcrypt está disponível globalmente como "dcodeIO.bcrypt" ou "bcrypt"
+        // na cdn do bcryptjs, a variável global é "dcodeIO" em alguns ambientes;
+        // a forma compatível:
+        const bcrypt = window.bcrypt || (window.dcodeIO && window.dcodeIO.bcrypt);
+        if (!bcrypt) {
+          showMsg('Erro interno: bcrypt não carregado', '#e11');
+          return;
+        }
+
+        // comparar senha com hash (usamos compareSync para simplicidade)
+        const match = await new Promise((res) => {
+          // bcrypt.compare pode ser sync ou async; usar compare (async com callback)
+          try {
+            bcrypt.compare(pass, data.senha_hash, (err, ok) => {
+              if (err) res(false);
+              else res(ok);
+            });
+          } catch (e) { res(false); }
+        });
+
+        if (!match) {
+          showMsg('Usuário ou senha incorretos.', '#e11');
+          return;
+        }
+
+        // sucesso -> cria sessão local (token simples)
+        const token = Math.random().toString(36).slice(2) + Date.now().toString(36);
+        const session = {
+          user,
+          token,
+          expires: Date.now() + 1000 * 60 * 60 * 4 // 4 horas
+        };
+        localStorage.setItem('jkAdminSession', JSON.stringify(session));
+
+        // redireciona para painel admin
+        window.location.href = '/admin/painel.html'; // ajuste se seu painel tiver outro caminho
+      } catch (err) {
+        console.error(err);
+        showMsg('Erro ao validar. Veja console.', '#e11');
+      }
+    });
+
+    function showMsg(text, color = '#e11') {
+      loginMsg.style.display = 'block';
+      loginMsg.style.color = color;
+      loginMsg.textContent = text;
+    }
+  </script>
+</body>
+    </html>
