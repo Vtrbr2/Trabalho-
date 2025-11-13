@@ -723,7 +723,12 @@ margin-left: auto; /* empurra ele pro canto direito */
 }
 
 /* Process Timeline */
-        .process-timeline {
+       .vitor {
+            background: linear-gradient(135deg, #f8f9fc, #eef2ff);
+       }
+
+
+.process-timeline {
             margin-bottom: 100px;
         }
 
