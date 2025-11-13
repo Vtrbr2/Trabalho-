@@ -27,10 +27,11 @@ onValue(refAvaliacoes, (snapshot) => {
     card.classList.add("avaliacao-card");
 
     card.innerHTML = `
-      <div class="avaliacao-estrelas">${"★".repeat(dados.estrelas)}</div>
-      <h4>${dados.nome || "Anônimo"}</h4>
-      <p>${dados.comentario}</p>
-    `;
+  ${dados.foto ? `<img class="foto-perfil" src="${dados.foto}" alt="Foto de ${dados.nome}">` : ""}
+  <div class="avaliacao-estrelas">${"★".repeat(dados.estrelas)}</div>
+  <h4>${dados.nome || "Anônimo"}</h4>
+  <p>${dados.comentario}</p>
+`;
     container.appendChild(card);
   });
 
