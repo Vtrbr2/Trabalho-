@@ -6,8 +6,7 @@ const firebaseConfig = {
   authDomain: "avaliacoes-20599.firebaseapp.com",
   databaseURL: "https://avaliacoes-20599-default-rtdb.firebaseio.com/",
   projectId: "avaliacoes-20599",
-  storageBucket: "avaliacoes-20599.firebasestorage.app",
-  messagingSenderId: "1003621715829",
+  storageBucket: "avaliacoes-20599.appspot.com",  messagingSenderId: "1003621715829",
   appId: "1:1003621715829:web:eb82bed77a69e570324d3c"
 };
 
