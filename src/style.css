@@ -724,8 +724,12 @@ margin-left: auto; /* empurra ele pro canto direito */
 
 /* Process Timeline */
        .vitor {
-            background: linear-gradient(135deg, #f8f9fc, #eef2ff);
-       }
+  background: none !important;
+  background: linear-gradient(135deg, #f8f9fc, #eef2ff) !important;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
 
 
 .process-timeline {
@@ -767,7 +771,7 @@ margin-left: auto; /* empurra ele pro canto direito */
         .timeline-dot {
             width: 40px;
             height: 40px;
-           /*tirei aqui*/
+           background: #fff;
             border: 2px solid #000;
             margin: 0 auto 30px;
             position: relative;
