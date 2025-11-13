@@ -179,10 +179,12 @@
   </div>
   <textarea id="comentarioInput" placeholder="Escreva seu comentário..."></textarea>
 <!-- ================= upload de avatar (opcional) ================= -->
-<label for="avatarInput" style="display:block; margin-top:10px; font-size:14px;">Foto de perfil (opcional)</label>
-<input id="avatarInput" type="file" accept="image/*" style="display:block; margin:6px 0;">
-<div id="avatarPreview" style="margin-top:8px;"></div>
-<!-- =============================================================== -->
+<div class="foto-upload">
+  <label for="fotoInput">Escolher foto:</label>
+  <input type="file" id="fotoInput" accept="image/*" />
+  <img id="fotoPreview" class="foto-preview" src="" alt="Prévia da foto" />
+        </div>
+      <!-- =============================================================== -->
       <button id="enviarAvaliacao">Enviar Avaliação</button>
   </div>
 
