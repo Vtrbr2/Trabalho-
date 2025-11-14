@@ -95,7 +95,7 @@ body {
     display: block;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, #6d28d9, #3b82f6);
+    background: linear-gradient(90deg, #6d28d9, #3b82f6); !important 
     position: absolute;
     bottom: -5px;
     left: 0;
