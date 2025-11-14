@@ -188,117 +188,154 @@ margin-left: auto; /* empurra ele pro canto direito */
 }
 
 /* ===== hero ===== */
-.avaliacoes-section {
-  max-width: 850px;
-  margin: 60px auto;
-  padding: 0 20px;
-}
 
-.avaliacoes-title {
-  font-size: 2.4rem;
-  font-weight: 800;
-  text-align: center;
-  margin-bottom: 30px;
-  color: #222;
-}
 
-.filtros-area {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 25px;
-}
-
-.filtros-area select {
-  flex: 1;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  font-size: 1rem;
-}
-
-/* Cards */
-.lista-av {
+  
+  /* Hero */
+#hero {
   display: grid;
-  gap: 20px;
+  align-items: start;
+  justify-items: center;
+  padding-top: 60px; /* controla o espaço do topo */
+  padding-bottom: 20px;
 }
 
-.card-av {
-  background: #fff;
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 3px 15px rgba(0,0,0,0.08);
-  cursor: pointer;
-  transition: transform .15s;
+.hero-content {
+  display: grid;
+  place-items: center;
+  gap: 40px;
 }
 
-.card-av:hover {
-  transform: scale(1.02);
-}
-
-.card-top {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.card-nome {
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-
-.card-nota {
-  font-weight: 600;
-  color: #f4b400;
-}
-
-.card-data {
-  font-size: .9rem;
-  opacity: .7;
-  margin-bottom: 10px;
-}
-
-/* Botão */
-.btn-load {
-  margin: 25px auto 0;
-  display: block;
-  padding: 12px 22px;
-  border: none;
-  background: #0077ff;
-  color: white;
-  font-size: 1rem;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.btn-load:hover {
-  background: #005fd6;
-}
-
-/* Modal */
-.modal {
-  display: none;
-  position: fixed;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  background: white;
+.hero-text {
+  text-align: center;
   max-width: 500px;
-  width: 90%;
-  padding: 25px;
-  border-radius: 14px;
 }
 
-.close {
-  float: right;
-  cursor: pointer;
-  font-size: 25px;
+.hero-text h1 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  margin-bottom: 10px;
+  animation: showHeroText 1s linear;
 }
+
+.hero-text h1 span {
+  color: var(--light-pink-clr);
+  font-size: clamp(2.5rem, 5vw, 3.25rem);
+  display: block;
+}
+
+.hero-text p {
+  margin-bottom: 20px;
+  animation: showHeroText 1.5s linear;
+}
+
+.btn-gradient {
+  display: inline-block;
+  padding: 12px 32px;
+  border-radius: 40px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  background: linear-gradient(270deg, #7b2ff7, #00baff, #ffffff);
+  background-size: 300% 300%;
+  animation: gradientMove 5s ease infinite;
+  box-shadow: 0 4px 20px rgba(123, 47, 247, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-gradient:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(123, 47, 247, 0.6);
+}
+
+.btn-gradient:active {
+  transform: scale(0.96);
+}
+
+/* animação suave do gradiente */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+/* SEÇÃO COMPLETA DE AVALIAÇÕES */
+.avaliacoes-full {
+    padding: 80px 10%;
+    background: linear-gradient(135deg, #f8f9ff, #eef2ff);
+    text-align: center;
+}
+
+.avaliacoes-full h2 {
+    font-size: 2.3rem;
+    color: #4a00e0;
+    margin-bottom: 10px;
+}
+
+.sub-av {
+    color: #6b6b6b;
+    margin-bottom: 50px;
+}
+
+/* GRID DOS CARDS */
+.avaliacoes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+/* CARD INDIVIDUAL */
+.avaliacao-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    transition: transform .3s ease, box-shadow .3s ease;
+    text-align: left;
+}
+
+.avaliacao-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 35px rgba(0,0,0,0.12);
+}
+
+/* FOTO */
+.avaliacao-foto {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #6c63ff;
+    margin-bottom: 10px;
+}
+
+/* NOME */
+.avaliacao-nome {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* ESTRELAS */
+.avaliacao-estrelas {
+    color: #facc15;
+    margin: 5px 0 10px;
+}
+
+/* COMENTÁRIO */
+.avaliacao-texto {
+    color: #555;
+    font-size: .95rem;
+    line-height: 1.5;
+      }
+
 
 
 
