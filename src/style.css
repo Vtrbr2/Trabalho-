@@ -1,3 +1,4 @@
+
 /* ===== RESET BÁSICO ===== */
 * {
     margin: 0;
@@ -71,7 +72,7 @@ body {
 
     /* Botão hamburguer */
     .menu-btn {
-      width: 44px; height: 44px;
+      width: 10px; height: 10px;
       background: transparent; border: none;
       display: flex; flex-direction: column;
       justify-content: center; align-items: center;
