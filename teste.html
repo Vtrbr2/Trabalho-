@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Gradiente Roxo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', Arial, sans-serif;
+      background: #F9FAFB;
+    }
+
+    /* NAVBAR/HEADER fixo no topo */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; width: 100vw;
+      height: 64px;
+      background: #fff;
+      z-index: 200;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    /* Botão hamburguer */
+    .menu-btn {
+      width: 44px; height: 44px;
+      background: transparent; border: none;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      cursor: pointer; z-index: 201;
+      position: absolute;
+      top: 10px; right: 20px;
+    }
+    .menu-btn span {
+      display: block;
+      height: 2px; width: 28px;
+      background: #8B5CF6;
+      margin: 5px 0;
+      border-radius: 2px;
+      transition: .3s;
+    }
+    .menu-btn.open span:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+    .menu-btn.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-btn.open span:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
+
+    /* MENU GRADIENTE ROXO - abaixo do header */
+    .nav-menu {
+      position: absolute;
+      top: 64px;
+      left: 0;
+      width: 100vw;
+      max-height: 0;
+      background: linear-gradient(135deg, #8B5CF6 0%, #C084FC 100%);
+      box-shadow: 0 4px 32px rgba(140,92,246,0.10);
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.52,0.16,0.24,0.96);
+      z-index: 199;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .nav-menu.open {
+      max-height: 350px;
+    }
+
+    .nav-menu ul {
+      margin: 0; padding: 0;
+      list-style: none;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .nav-menu li {
+      width: 100%;
+    }
+    .nav-menu a {
+      color: #fff;
+      padding: 16px 0;
+      text-align: center;
+      width: 100%;
+      font-size: 1.15em;
+      text-decoration: none;
+      transition: background .18s, font-weight .18s;
+      display: block;
+    }
+    .nav-menu a:hover {
+      background: rgba(255,255,255,0.07);
+      font-weight: 600;
+    }
+
+    @media(min-width: 768px) {
+      .navbar { position: relative; box-shadow: none;}
+      .menu-btn { display: none !important; }
+      .nav-menu {
+        position: static;
+        background: none;
+        box-shadow: none;
+        max-height: none;
+        flex-direction: row;
+        align-items: center;
+        width: auto;
+        top: auto;
+        left: auto;
+      }
+      .nav-menu.open { max-height: none; }
+      .nav-menu ul { flex-direction: row;}
+      .nav-menu li { width: auto;}
+      .nav-menu a {
+        color: #8B5CF6;
+        padding: 12px 18px;
+        background: transparent;
+        font-weight: 500;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header com Menu -->
+  <header class="navbar">
+    <button class="menu-btn" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-menu">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#avaliacoes">Avaliações</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Conteúdo -->
+  <main style="margin-top: 64px; padding: 20px;">
+    <section id="home">
+      <h1>Home</h1>
+      <p>Conteúdo da seção Home...</p>
+    </section>
+    <section id="sobre">
+      <h1>Sobre</h1>
+      <p>Conteúdo da seção Sobre...</p>
+    </section>
+    <section id="servicos">
+      <h1>Serviços</h1>
+      <p>Conteúdo da seção Serviços...</p>
+    </section>
+    <section id="avaliacoes">
+      <h1>Avaliações</h1>
+      <p>Conteúdo da seção Avaliações...</p>
+    </section>
+    <section id="contato">
+      <h1>Contato</h1>
+      <p>Conteúdo da seção Contato...</p>
+    </section>
+  </main>
+
+  <script>
+    const menuBtn = document.querySelector('.menu-btn');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-menu a');
+
+    menuBtn.addEventListener('click', () => {
+      navMenu.classList.toggle('open');
+      menuBtn.classList.toggle('open');
+    });
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+        menuBtn.classList.remove('open');
+      });
+    });
+  </script>
+</body>
+  </html>
