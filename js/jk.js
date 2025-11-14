@@ -12,3 +12,12 @@ document.querySelectorAll('.nav-menu a').forEach(link => {
     btn.classList.remove('open');
   });
 });
+
+window.addEventListener("scroll", () => {
+  const nav = document.querySelector(".navbar");
+  if (window.scrollY > 0) {
+    nav.classList.add("scrolled");
+  } else {
+    nav.classList.remove("scrolled");
+  }
+});
