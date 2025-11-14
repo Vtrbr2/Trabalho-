@@ -802,6 +802,7 @@ margin-left: auto; /* empurra ele pro canto direito */
   letter-spacing: 0.5px;
   transition: 0.25s ease;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  margin-top: 20px;
 }
 
 .btn-link-bonito:hover {
