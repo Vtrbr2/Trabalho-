@@ -86,17 +86,19 @@ body {
 
 /* Botão hamburguer */
 .menu-btn {
-  width: 10px; height: 44px;
+.menu-btn {
+  width: 44px; height: 44px;
   background: transparent; border: none;
   display: flex; flex-direction: column;
   justify-content: center; align-items: center;
   cursor: pointer; z-index: 201;
   position: absolute;
-  top: 10px; right: 20px; /* ajuste onde quiser no header */
+  top: 10px; right: 20px;
 }
 .menu-btn span {
   display: block;
-  height: 1px; width: 10px;
+  height: 2px;           /* Fino, mas visível */
+  width: 8px;           /* Elegante e tocável */
   background: #8B5CF6;
   margin: 5px 0;
   border-radius: 2px;
