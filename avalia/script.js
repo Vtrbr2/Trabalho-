@@ -1,81 +1,51 @@
 // ========================
 // 🔥 CONFIGURAÇÃO FIREBASE
 // ========================
+
+
+
+                
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js";
+
 const firebaseConfig = {
-    apiKey: "SUA_APIKEY",
-    authDomain: "SEU_AUTH",
-    databaseURL: "SUA_DATABASE_URL",
-    projectId: "SEU_PROJECT_ID",
-    storageBucket: "SEU_BUCKET",
-    messagingSenderId: "SENDER",
-    appId: "APPID"
+  apiKey: "AIzaSyBF_-yFhm5X3Dy-jd84dHyU4UT5Uta-XhE",
+  authDomain: "avaliacoes-20599.firebaseapp.com",
+  databaseURL: "https://avaliacoes-20599-default-rtdb.firebaseio.com/",
+  projectId: "avaliacoes-20599",
+  storageBucket: "avaliacoes-20599.firebasestorage.app",
+  messagingSenderId: "1003621715829",
+  appId: "1:1003621715829:web:eb82bed77a69e570324d3c"
 };
 
-firebase.initializeApp(firebaseConfig);
+// Inicializar Firebase
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const refAvaliacoes = ref(db, "avaliacoes");
 
-const db = firebase.database();
+// Elemento que recebe as avaliações
+const lista = document.getElementById("listaAvaliacoes");
 
+// Carregar avaliações completas
+onValue(refAvaliacoes, (snapshot) => {
+  lista.innerHTML = ""; // limpar
 
-// ===========================
-// 🔥 FUNÇÃO PRINCIPAL
-// Carrega avaliações do Firebase
-// ===========================
-function carregarAvaliacoes() {
-    db.ref("avaliacoes").on("value", (snapshot) => {
-        const lista = [];
+  snapshot.forEach(child => {
+    const dados = child.val();
 
-        snapshot.forEach((child) => {
-            lista.push({
-                nome: child.val().nome || "Usuário",
-                comentario: child.val().comentario || "",
-                estrelas: child.val().estrelas || 5,
-                fotoUrl: child.val().fotoUrl || "img/user-default.png"
-            });
-        });
+    const item = document.createElement("div");
+    item.classList.add("avaliacao-item");
 
-        // Monta seção completa
-        carregarAvaliacoesCompleto(lista);
+    item.innerHTML = `
+      <div class="avaliacao-estrelas">${"★".repeat(dados.estrelas)}</div>
+      <h3>${dados.nome || "Anônimo"}</h3>
+      <p>${dados.comentario}</p>
+    `;
 
-        // Se você tiver carrossel
-        // montarCarrossel(lista);
-    });
-}
+    lista.appendChild(item);
+  });
+});
 
-
-
-// ===========================
-// 🔥 NOVA SEÇÃO COMPLETA
-// (a que você pediu)
-// ===========================
-function carregarAvaliacoesCompleto(lista) {
-    const container = document.getElementById("avaliacoesLista");
-    if (!container) return;
-
-    container.innerHTML = "";
-
-    lista.forEach((av) => {
-        container.innerHTML += `
-            <div class="avaliacao-card">
-                <img src="${av.fotoUrl}" class="avaliacao-foto">
-
-                <div class="avaliacao-nome">${av.nome}</div>
-
-                <div class="avaliacao-estrelas">
-                    ${"★".repeat(av.estrelas)}${"☆".repeat(5 - av.estrelas)}
-                </div>
-
-                <p class="avaliacao-texto">${av.comentario}</p>
-            </div>
-        `;
-    });
-}
-
-
-
-// ===========================
-// 🔥 INICIAR
-// ===========================
-carregarAvaliacoes();
 
 
 // ===========================
