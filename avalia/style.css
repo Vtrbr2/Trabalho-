@@ -196,7 +196,7 @@ margin-left: auto; /* empurra ele pro canto direito */
   display: grid;
   align-items: start;
   justify-items: center;
-  padding-top: 90px; /* controla o espaço do topo */
+  padding-top: 180px; /* controla o espaço do topo */
   padding-bottom:  20px;
 }
 
