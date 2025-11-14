@@ -1,4 +1,4 @@
-
+n
 /* ===== RESET BÁSICO ===== */
 * {
     margin: 0;
@@ -753,7 +753,7 @@ body {
         /* Footer Bottom Section - Copyright & Policies */
         .footer-bottom {
             padding: 30px 0;
-            background: #1e3a8a;
+            background: #292929;
         }
 
         .footer-bottom-content {
