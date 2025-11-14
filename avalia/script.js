@@ -1,10 +1,8 @@
 // ========================
-// 🔥 CONFIGURAÇÃO FIREBASE
+// by: @vitorrodrigues
 // ========================
 
-    // ========================
-// 🔥 CONFIGURAÇÃO FIREBASE
-// ========================
+
 const firebaseConfig = {
     apiKey: "AIzaSyBF_-yFhm5X3Dy-jd84dHyU4UT5Uta-XhE",
     authDomain: "avaliacoes-20599.firebaseapp.com",
@@ -33,7 +31,7 @@ function carregarAvaliacoes() {
                 nome: child.val().nome || "Usuário",
                 comentario: child.val().comentario || "",
                 estrelas: child.val().estrelas || 5,
-                fotoUrl: child.val().fotoUrl || "img/user-default.png"
+                
             });
         });
 
@@ -60,7 +58,6 @@ function carregarAvaliacoesCompleto(lista) {
     lista.forEach((av) => {
         container.innerHTML += `
             <div class="avaliacao-card">
-                <img src="${av.fotoUrl}" class="avaliacao-foto">
 
                 <div class="avaliacao-nome">${av.nome}</div>
 
