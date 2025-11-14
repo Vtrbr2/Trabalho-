@@ -193,6 +193,7 @@ margin-left: auto; /* empurra ele pro canto direito */
   
   /* Hero */
 #hero {
+background: linear-gradient(135deg, #f8f9ff, #eef2ff);
   display: grid;
   align-items: start;
   justify-items: center;
