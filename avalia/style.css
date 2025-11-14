@@ -201,7 +201,75 @@ body {
 
 
 
+/* SEÇÃO COMPLETA DE AVALIAÇÕES */
+.avaliacoes-full {
+    padding: 80px 10%;
+    background: linear-gradient(135deg, #f8f9ff, #eef2ff);
+    text-align: center;
+}
 
+.avaliacoes-full h2 {
+    font-size: 2.3rem;
+    color: #4a00e0;
+    margin-bottom: 10px;
+}
+
+.sub-av {
+    color: #6b6b6b;
+    margin-bottom: 50px;
+}
+
+/* GRID DOS CARDS */
+.avaliacoes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+/* CARD INDIVIDUAL */
+.avaliacao-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    transition: transform .3s ease, box-shadow .3s ease;
+    text-align: left;
+}
+
+.avaliacao-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 35px rgba(0,0,0,0.12);
+}
+
+/* FOTO */
+.avaliacao-foto {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #6c63ff;
+    margin-bottom: 10px;
+}
+
+/* NOME */
+.avaliacao-nome {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* ESTRELAS */
+.avaliacao-estrelas {
+    color: #facc15;
+    margin: 5px 0 10px;
+}
+
+/* COMENTÁRIO */
+.avaliacao-texto {
+    color: #555;
+    font-size: .95rem;
+    line-height: 1.5;
+}
 
 /* --- Footer --- */
 /*footer*/
