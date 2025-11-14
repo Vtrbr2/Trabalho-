@@ -196,8 +196,8 @@ margin-left: auto; /* empurra ele pro canto direito */
   display: grid;
   align-items: start;
   justify-items: center;
-  padding-top: 60px; /* controla o espaço do topo */
-  padding-bottom: 20px;
+  padding-top: 70px; /* controla o espaço do topo */
+  padding-bottom: 0 25px;
 }
 
 .hero-content {
