@@ -61,16 +61,43 @@
 
 
 <!--Seçao avaliacoes carregadas pelo java script-->
+<section class="avaliacoes-section">
+  <h2 class="avaliacoes-title">Avaliações dos Usuários</h2>
 
-<section class="avaliacoes-full" id="avaliacoes">
+  <!-- Filtros -->
+  <div class="filtros-area">
+    <select id="filtroNota">
+      <option value="">Todas as notas</option>
+      <option value="5">5 estrelas</option>
+      <option value="4">4 estrelas</option>
+      <option value="3">3 estrelas</option>
+      <option value="2">2 estrelas</option>
+      <option value="1">1 estrela</option>
+    </select>
 
-    <div class="avaliacoes-container">
-  <h2>Avaliações completas</h2>
-  <div id="listaAvaliacoes"></div>
-	</div>
-        <!-- O JS vai inserir os cards aqui -->
-    </div>
+    <select id="filtroOrdem">
+      <option value="recentes">Mais recentes</option>
+      <option value="antigas">Mais antigas</option>
+    </select>
+  </div>
+
+  <!-- Container dos cards -->
+  <div id="listaAvaliacoes" class="lista-av"></div>
+
+  <!-- Paginação -->
+  <button id="btnCarregarMais" class="btn-load">Carregar mais</button>
 </section>
+
+<!-- Modal de avaliação completa -->
+<div id="modalAvaliacao" class="modal">
+  <div class="modal-content">
+    <span id="fecharModal" class="close">&times;</span>
+    <h3 id="modalNome"></h3>
+    <p id="modalNota"></p>
+    <p id="modalData"></p>
+    <p id="modalTexto"></p>
+  </div>
+</div>
 
 
 
