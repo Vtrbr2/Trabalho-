@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>trabalho</title>
+    <link rel="stylesheet" href="avalia/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    </head>
+
+
+    <!--aqui começa o bloqueador de f12 e possivelmente cópias-->
+   
+    <script>
+    // Bloquear F12, Ctrl+Shift+I, Ctrl+Shift+C, Ctrl+Shift+J
+    document.addEventListener("keydown", function(e) {
+        if (
+            e.key === "F12" || 
+            (e.ctrlKey && e.shiftKey && ["I","C","J"].includes(e.key.toUpperCase())) ||
+            (e.ctrlKey && e.key.toUpperCase() === "U") // bloquear Ctrl+U (ver código-fonte)
+        ) {
+            e.preventDefault();
+             }
+    });
+
+    // Bloquear clique direito
+    document.addEventListener("contextmenu", function(e) {
+        e.preventDefault();
+            });
+
+    // Bloquear seleção de texto
+    document.addEventListener("selectstart", function(e) {
+        e.preventDefault();
+    });
+
+    // Bloquear copiar (Ctrl+C)
+    document.addEventListener("copy", function(e) {
+        e.preventDefault();
+            });
+    </script>
+    
+<!--aqui acaba o bloqueador de f12 e cópias-->
+  
+       
+    <body>
+
+    <!-- nav bar, by ©️ vitor 👻-->
+    <nav class="navbar">
+  <div class="logo">
+    <a href="#">
+      <img src="logo/logo.png" alt="JK Construções">
+    </a>
+  </div>
+
+        
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Sobre</a></li>
+            <li><a href="#">Serviços</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+          </nav>
+
+
+<header class="hero">
+  <div class="hero-content">
+    <h1> Olá🖐🏻!</h1>
+    <p>Veja todas as avaliações completas aqui.</p>
+      </div>
+</header>
+
+<!--Seçao avaliacoes carregadas pelo java script-->
+
+<section class="avaliacoes-full" id="avaliacoes">
+    <h2>Avaliações Completas</h2>
+    <p class="sub-av">Veja o que nossos clientes dizem</p>
+
+    <div class="avaliacoes-container" id="avaliacoesLista">
+        <!-- O JS vai inserir os cards aqui -->
+    </div>
+</section>
+
+
+
+
+<!-- Footer Section (colunas empilhadas) -->
+<footer class="dark-footer">
+  <div class="footer-container">
+
+	  <!-- Colunas empilhadas -->
+    <nav class="footer-links vertical-layout">
+    <div class="footer-col">
+         <a href="https://trabalho-zeta-pearl.vercel.app/" class="btn-hero">voltar</a>
+    </div>
+      
+      
+      <div class="footer-col">
+        <h4>Serviços</h4>
+        <ul>
+          <li><a href="#">Casas</a></li>
+          <li><a href="#">Reformas</a></li>
+          <li><a href="#">Acabamentos</a></li>
+         
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#">Sobre Nós</a></li>
+          <li><a href="#">Equipe</a></li>
+          <li><a href="#">Parceiros</a></li>
+          <li><a href="#">Carreiras</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Redes</h4>
+        <ul>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+        </ul>
+      </div>
+    </nav>
+ 
+    <hr class="footer-divider" />
+
+    <!-- Rodapé inferior -->
+    <div class="footer-bottom">
+      <a href="#" class="footer-logo">Jk Construçoes</a>
+      <p class="footer-copy">© 2025 Jk Construçoes. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+
+      
+<script src="js/jk.js"></script>
+
+</body>
+</html>
+
+
+
+      
