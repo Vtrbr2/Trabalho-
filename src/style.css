@@ -67,125 +67,107 @@ body {
 .logo a:hover img {
     transform: scale(1.05);
     }
-/* ===== LINKS ===== */
-.nav-links {
-    display: flex;
-    justify-content: space-around;
-    width: 40%;
-    list-style: none;
-}
+/*nav burguer*/
 
-.nav-links li {
-    position: relative;
-}
+    /* Botão hamburguer */
+    .menu-btn {
+      width: 44px; height: 44px;
+      background: transparent; border: none;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      cursor: pointer; z-index: 201;
+      position: absolute;
+      top: 10px; right: 20px;
+    }
+    .menu-btn span {
+      display: block;
+      height: 2px; width: 28px;
+      background: #8B5CF6;
+      margin: 5px 0;
+      border-radius: 2px;
+      transition: .3s;
+    }
+    .menu-btn.open span:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+    .menu-btn.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-btn.open span:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
 
-.nav-links a {
-    color: #2d2d2d;
-    text-decoration: none;
-    letter-spacing: 0.5px;
-    font-weight: 500;
-    font-size: 16px;
-    padding: 8px 4px;
-    transition: color 0.3s ease;
-}
+    /* MENU GRADIENTE ROXO - abaixo do header */
+    .nav-menu {
+      position: absolute;
+      top: 64px;
+      left: 0;
+      width: 100vw;
+      max-height: 0;
+      background: linear-gradient(135deg, #8B5CF6 0%, #C084FC 100%);
+      box-shadow: 0 4px 32px rgba(140,92,246,0.10);
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.52,0.16,0.24,0.96);
+      z-index: 199;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .nav-menu.open {
+      max-height: 350px;
+    }
 
-/* Linha animada no hover */
-.nav-links a::after {
-    content: '';
-    display: block;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #6d28d9, #3b82f6);
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    border-radius: 2px;
-    transition: width 0.3s ease;
-}
+    .nav-menu ul {
+      margin: 0; padding: 0;
+      list-style: none;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .nav-menu li {
+      width: 100%;
+    }
+    .nav-menu a {
+      color: #fff;
+      padding: 16px 0;
+      text-align: center;
+      width: 100%;
+      font-size: 1.15em;
+      text-decoration: none;
+      transition: background .18s, font-weight .18s;
+      display: block;
+    }
+    .nav-menu a:hover {
+      background: rgba(255,255,255,0.07);
+      font-weight: 600;
+    }
 
-.nav-links a:hover {
-    color: #6d28d9;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-/* ===== MENU MOBILE ===== */
-.burger {
-    display: none;
-    cursor: pointer;
-margin-left: auto; /* empurra ele pro canto direito */
-}
-
-.burger div {
-    width: 25px;
-    height: 3px;
-    background-color: #333;
-    margin: 5px;
-    transition: all 0.3s ease;
-}
-
-/* ===== RESPONSIVIDADE ===== */
-@media screen and (max-width: 768px) {
-    .nav-links {
-        position: absolute;
-        right: 0;
-        height: 90vh;
-        top: 10vh;
-        background: linear-gradient(180deg, #fff 0%, #f3e8ff 50%, #e0f2fe 100%);
-        display: flex;
-        flex-direction: column;
+    @media(min-width: 768px) {
+      .navbar { position: relative; box-shadow: none;}
+      .menu-btn { display: none !important; }
+      .nav-menu {
+        position: static;
+        background: none;
+        box-shadow: none;
+        max-height: none;
+        flex-direction: row;
         align-items: center;
-        width: 65%;
-        transform: translateX(100%);
-        transition: transform 0.5s ease-in-out;
-        box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+        width: auto;
+        top: auto;
+        left: auto;
+      }
+      .nav-menu.open { max-height: none; }
+      .nav-menu ul { flex-direction: row;}
+      .nav-menu li { width: auto;}
+      .nav-menu a {
+        color: #8B5CF6;
+        padding: 12px 18px;
+        background: transparent;
+        font-weight: 500;
+      }
     }
 
-    .navbar.scrolled .nav-links {
-        top: 8vh;
-    }
-
-    .nav-links li {
-        opacity: 0;
-    }
-
-    .burger {
-        display: block;
-    }
-
-    .burger div {
-        background-color: #6d28d9;
-    }
-}
-
-/* ===== CLASSE ATIVA (ABRIR MENU) ===== */
-.nav-active {
-    transform: translateX(0%);
-}
-
-@keyframes navLinkFade {
-    from {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-/* ===== ÍCONE BURGUER PARA "X" ===== */
-.toggle .line1 {
-    transform: rotate(-45deg) translate(-5px, 6px);
-}
-.toggle .line2 {
-    opacity: 0;
-}
-.toggle .line3 {
-    transform: rotate(45deg) translate(-5px, -6px);
-}
 
 /* ===== hero ===== */
 .hero {
