@@ -96,7 +96,7 @@ body {
 }
 .menu-btn span {
   display: block;
-  height: 2px; width: 25px;
+  height: 1px; width: 10px;
   background: #8B5CF6;
   margin: 5px 0;
   border-radius: 2px;
