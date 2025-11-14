@@ -8,7 +8,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 50%, #e0f2fe 100%);
-    color: #2d2d2d;
+    
     overflow-x: hidden;
 }
 
@@ -207,66 +207,19 @@ background: linear-gradient(135deg, #f8f9ff, #eef2ff);
   gap: 40px;
 }
 
-.hero-text {
-  text-align: center;
-  max-width: 500px;
-}
 
-.hero-text h1 {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: clamp(2rem, 5vw, 2.75rem);
-  margin-bottom: 10px;
-  animation: showHeroText 1s linear;
-}
 
-.hero-text h1 span {
-  color: var(--light-pink-clr);
-  font-size: clamp(2.5rem, 5vw, 3.25rem);
-  display: block;
-}
 
-.hero-text p {
-  margin-bottom: 20px;
-  animation: showHeroText 1.5s linear;
-}
 
-.btn-gradient {
-  display: inline-block;
-  padding: 12px 32px;
-  border-radius: 40px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #fff;
-  text-decoration: none;
-  text-align: center;
-  background: linear-gradient(270deg, #7b2ff7, #00baff, #ffffff);
-  background-size: 300% 300%;
-  animation: gradientMove 5s ease infinite;
-  box-shadow: 0 4px 20px rgba(123, 47, 247, 0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
 
-.btn-gradient:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 25px rgba(123, 47, 247, 0.6);
-}
 
-.btn-gradient:active {
-  transform: scale(0.96);
-}
+
+
+
+
 
 /* animação suave do gradiente */
-@keyframes gradientMove {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
+
 /* SEÇÃO COMPLETA DE AVALIAÇÕES */
 .avaliacoes-full {
     padding: 80px 10%;
