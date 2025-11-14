@@ -15,8 +15,8 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 // === LOGIN SIMPLES ===
-const adminUser = "admin";  // usuário definido
-const adminPass = "1234";   // senha definida
+const adminUser = "@jk";  // usuário definido
+const adminPass = "jk2122391";   // senha definida
 
 const loginDiv = document.getElementById("login");
 const painelDiv = document.getElementById("painel");
