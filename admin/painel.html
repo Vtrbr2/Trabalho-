@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Painel Visitantes</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+  body{font-family:'Poppins',sans-serif;background:#f6f7fb;margin:0}
+  header{background:linear-gradient(90deg,#6d28d9,#3b82f6);color:#fff;padding:18px;text-align:center;font-weight:700}
+  .wrap{max-width:1100px;margin:18px auto;padding:16px;display:grid;gap:18px}
+  .grid-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+  .card{background:#fff;padding:18px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.06);text-align:center}
+  .card h2{margin:0;font-size:1.8rem;color:#111}
+  .card p{margin:6px 0 0;color:#666}
+  .box{background:#fff;padding:16px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.06)}
+  table{width:100%;border-collapse:collapse;font-size:0.9rem}
+  th,td{padding:10px;border-bottom:1px solid #eee;text-align:left}
+  th{background:#fafafa}
+  @media (max-width:700px){ .wrap{padding:10px} table{font-size:0.8rem} }
+</style>
+</head>
+<body>
+
+<header>Painel de Visitas</header>
+
+<div class="wrap">
+  <div class="grid-cards">
+    <div class="card">
+      <h2 id="totalVisitors">0</h2>
+      <p>Visitantes únicos</p>
+    </div>
+    <div class="card">
+      <h2 id="avgTime">0s</h2>
+      <p>Tempo médio</p>
+    </div>
+    <div class="card">
+      <h2 id="totalTime">0s</h2>
+      <p>Tempo total (s)</p>
+    </div>
+  </div>
+
+  <div class="box">
+    <h3>Classificação de tempo (pizza)</h3>
+    <canvas id="visitChart" style="max-height:260px"></canvas>
+  </div>
+
+  <div class="box">
+    <h3>Lista de visitantes</h3>
+    <table>
+      <thead><tr><th>ID</th><th>Primeira visita</th><th>Última visita</th><th>Tempo total (s)</th></tr></thead>
+      <tbody id="visitorList"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- script que puxa os dados do Firebase e gera o gráfico -->
+<script type="module" src="./painel-visitas.js"></script>
+</body>
+</html>
