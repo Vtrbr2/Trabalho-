@@ -180,6 +180,7 @@ body {
   min-height: 90vh;
   overflow: hidden;
   position: relative;
+  padding-top: 80px;
 }
 
 /* Efeito decorativo no fundo */
@@ -219,6 +220,49 @@ body {
   margin-bottom: 30px;
 }
 
+/* Animação da entrada do hero */
+.hero-content {
+  opacity: 0;
+  animation: heroFadeUp .9s ease-out forwards;
+  animation-delay: .1s;
+}
+
+/* Animação do título */
+.hero-content h1 {
+  opacity: 0;
+  animation: fadeItem .8s ease-out forwards;
+  animation-delay: .3s;
+}
+
+/* Animação do parágrafo */
+.hero-content p {
+  opacity: 0;
+  animation: fadeItem .8s ease-out forwards;
+  animation-delay: .5s;
+}
+
+/* Keyframes */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeItem {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .btn-hero {
   display: inline-block;
   background: linear-gradient(90deg, #6d28d9, #3b82f6);
