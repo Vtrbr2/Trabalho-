@@ -47,19 +47,6 @@
   eruda.init();
 </script>
 	
- <!-- COOKIE BANNER (cole antes do </body>) -->
-<div id="cookie-banner" class="cookie-banner" aria-live="polite">
-  <div class="cookie-inner">
-    <div class="cookie-text">
-      <strong>Usamos cookies</strong>
-      <p>Para melhorar sua experiência e contar visitas ao site. Aceitar criará um identificador único e salvará dados anônimos no banco (tempo de visita).</p>
-    </div>
-    <div class="cookie-actions">
-      <button id="cookieDecline" class="cookie-btn cookie-decline">Recusar</button>
-      <button id="cookieAccept" class="cookie-btn cookie-accept">Aceitar</button>
-    </div>
-  </div>
-</div>
 
 
    
@@ -355,12 +342,16 @@
         </div>
     </footer>
     
-
+<div id="cookieBanner" class="cookie-banner">
+    <p>Usamos cookies para melhorar sua experiência. Ao continuar, você concorda com nossa política.</p>
+    <button id="acceptCookies">Aceitar Cookies</button>
+</div>
     
 <script type="module" src="js/jk-avaliacoes.js"></script>
 <script type="module" src="js/jk-upload.js"></script>
 <script src="js/jk-upload-preview.js"></script>
 <script src="js/jk.js"></script>
 <script type="module" src="js/jsvisita.js"></script>
+<script type="module" src="js/cookies-visitor.js"></script>
 </body>
 </html>
