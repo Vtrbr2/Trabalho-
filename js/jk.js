@@ -21,3 +21,11 @@ window.addEventListener("scroll", () => {
     nav.classList.remove("scrolled");
   }
 });
+// FAQ com animação
+document.querySelectorAll(".faq-item").forEach((item) => {
+  const btn = item.querySelector(".faq-question");
+
+  btn.addEventListener("click", () => {
+    item.classList.toggle("active");
+  });
+});
