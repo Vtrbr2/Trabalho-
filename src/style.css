@@ -180,7 +180,7 @@ body {
   min-height: 90vh;
   overflow: hidden;
   position: relative;
-  padding-top: 180px;
+  padding-top: 220px; !important;
 }
 
 /* Efeito decorativo no fundo */
