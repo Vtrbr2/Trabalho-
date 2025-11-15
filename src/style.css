@@ -177,7 +177,7 @@ body {
   justify-content: space-between;
   padding: 10vh 8%;
   background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 50%, #e0f2fe 100%);
-  min-height: 90vh;
+  min-height: 100vh;
   overflow: hidden;
   position: relative;
   padding-top: 220px; !important;
@@ -311,6 +311,9 @@ body {
     width: 100%;
     max-width: 400px;
   }
+}
+.hero-space {
+  height: 120px; /* ajuste à vontade */
 }
 /*servicos*/
 .servicos {
