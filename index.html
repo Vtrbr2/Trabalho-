@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="src/style-avaliacoes.css">
+    <link rel="stylesheet" href="css/cookies.css">
 </head>
 
     <!--aqui começa o bloqueador de f12 e possivelmente cópias--
@@ -42,8 +43,24 @@
     
 <!--aqui acaba o bloqueador de f12 e cópias-->
   
-    
+ <!-- COOKIE BANNER (cole antes do </body>) -->
+<div id="cookie-banner" class="cookie-banner" aria-live="polite">
+  <div class="cookie-inner">
+    <div class="cookie-text">
+      <strong>Usamos cookies</strong>
+      <p>Para melhorar sua experiência e contar visitas ao site. Aceitar criará um identificador único e salvará dados anônimos no banco (tempo de visita).</p>
+    </div>
+    <div class="cookie-actions">
+      <button id="cookieDecline" class="cookie-btn cookie-decline">Recusar</button>
+      <button id="cookieAccept" class="cookie-btn cookie-accept">Aceitar</button>
+    </div>
+  </div>
+</div>
+
+
+   
     <!-- Botão WhatsApp Flutuante -->
+	
 <a href="https://wa.me/5511999999999?text=Olá,%20vim%20pelo%20site!" 
    class="whatsapp-float" 
    target="_blank" 
@@ -340,6 +357,6 @@
 <script type="module" src="js/jk-upload.js"></script>
 <script src="js/jk-upload-preview.js"></script>
 <script src="js/jk.js"></script>
-
+<script type="module" src="js/jsvisita.js"></script>
 </body>
 </html>
