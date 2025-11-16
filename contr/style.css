@@ -1,7 +1,7 @@
 /* ------ HERO ------ */
 .hero-construcao {
     height: 55vh;
-    background: url("../images/hero-residencial.jpg") center/cover no-repeat;
+    background: url("../contr/casa-de-brinquedo-em-plantas.jpg") center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
