@@ -1,128 +1,303 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
-import { getDatabase, ref, onValue, remove } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js";
-
-// === CONFIGURAÇÃO FIREBASE ===
+const _0x3fa3b8 = _0x49ad;
+(function (_0x5c3a8d, _0xab4569) {
+    const _0x27f1a3 = _0x49ad, _0x2f3207 = _0x5c3a8d();
+    while (!![]) {
+        try {
+            const _0x414102 = parseInt(_0x27f1a3(0xe4)) / (0x141 + -0x3a * -0x6f + -0x1a66) * (-parseInt(_0x27f1a3(0xbb)) / (0x21 * -0x9 + 0x125 + -0x1 * -0x6)) + parseInt(_0x27f1a3(0xd6)) / (0x3e0 * -0x9 + -0x2 * -0x477 + 0x1bb * 0xf) * (-parseInt(_0x27f1a3(0x98)) / (0x1be7 + 0x145 * 0x19 + -0x774 * 0x8)) + -parseInt(_0x27f1a3(0xeb)) / (-0x23 * -0x9b + 0x23ab * 0x1 + -0x38d7) + parseInt(_0x27f1a3(0xed)) / (-0xe03 + -0xfe6 + 0x1def) * (-parseInt(_0x27f1a3(0x97)) / (0x1f85 + 0x1363 + 0xa2d * -0x5)) + parseInt(_0x27f1a3(0x70)) / (0x1d67 + -0x1 * 0x23e3 + 0x684) + parseInt(_0x27f1a3(0xe0)) / (-0x1 * -0x263 + 0x78a + 0xd3 * -0xc) + -parseInt(_0x27f1a3(0x80)) / (0x1c * 0x5c + -0x8 * -0xe7 + -0x113e * 0x1) * (-parseInt(_0x27f1a3(0xac)) / (-0x2 * 0x54d + -0x2 * -0x7b9 + -0x4cd));
+            if (_0x414102 === _0xab4569)
+                break;
+            else
+                _0x2f3207['push'](_0x2f3207['shift']());
+        } catch (_0x4da622) {
+            _0x2f3207['push'](_0x2f3207['shift']());
+        }
+    }
+}(_0x59db, -0x1f * 0xa0ff + 0xcfb9 * -0x1f + 0x398789));
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js';
+import {
+    getDatabase,
+    ref,
+    onValue,
+    remove
+} from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js';
 const firebaseConfig = {
-  apiKey: "AIzaSyBF_-yFhm5X3Dy-jd84dHyU4UT5Uta-XhE",
-  authDomain: "avaliacoes-20599.firebaseapp.com",
-  projectId: "avaliacoes-20599",
-  storageBucket: "avaliacoes-20599.firebasestorage.app",
-  messagingSenderId: "1003621715829",
-  appId: "1:1003621715829:web:eb82bed77a69e570324d3c",
-  databaseURL: "https://avaliacoes-20599-default-rtdb.firebaseio.com/"
-};
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-
-// === LOGIN SIMPLES ===
-const adminUser = "@jk";  // usuário definido
-const adminPass = "jk2122391";   // senha definida
-
-const loginDiv = document.getElementById("login");
-const painelDiv = document.getElementById("painel");
-const loginBtn = document.getElementById("loginBtn");
-
-loginBtn.addEventListener("click", () => {
-  const user = document.getElementById("user").value.trim();
-  const pass = document.getElementById("pass").value.trim();
-
-  if (user === adminUser && pass === adminPass) {
-    loginDiv.style.display = "none";
-    painelDiv.style.display = "block";
-    carregarAvaliacoes();
-  } else {
-    alert("Usuário ou senha incorretos.");
-  }
+        'apiKey': _0x3fa3b8(0x9e) + _0x3fa3b8(0x79) + _0x3fa3b8(0x82) + _0x3fa3b8(0xee),
+        'authDomain': _0x3fa3b8(0xf1) + _0x3fa3b8(0x6e) + _0x3fa3b8(0xa0) + 'om',
+        'projectId': _0x3fa3b8(0xf1) + _0x3fa3b8(0xfe),
+        'storageBucket': _0x3fa3b8(0xf1) + _0x3fa3b8(0x6e) + _0x3fa3b8(0x77) + _0x3fa3b8(0x7c),
+        'messagingSenderId': _0x3fa3b8(0x83) + _0x3fa3b8(0xc3),
+        'appId': _0x3fa3b8(0xa3) + _0x3fa3b8(0xa5) + _0x3fa3b8(0x8a) + _0x3fa3b8(0xb5) + '3c',
+        'databaseURL': _0x3fa3b8(0x7b) + _0x3fa3b8(0x81) + _0x3fa3b8(0xec) + _0x3fa3b8(0xc9) + _0x3fa3b8(0xbc) + _0x3fa3b8(0x8c)
+    }, app = initializeApp(firebaseConfig), db = getDatabase(app), adminUser = _0x3fa3b8(0xf4), adminPass = _0x3fa3b8(0xa1), loginDiv = document[_0x3fa3b8(0x94) + _0x3fa3b8(0x8d)](_0x3fa3b8(0xb3)), painelDiv = document[_0x3fa3b8(0x94) + _0x3fa3b8(0x8d)](_0x3fa3b8(0x6f)), loginBtn = document[_0x3fa3b8(0x94) + _0x3fa3b8(0x8d)](_0x3fa3b8(0xe8));
+loginBtn[_0x3fa3b8(0x7d) + _0x3fa3b8(0xc4)](_0x3fa3b8(0x9a), () => {
+    const _0x2c3731 = _0x3fa3b8, _0x3f7e3c = {
+            'wvDsd': _0x2c3731(0xef),
+            'tDZiD': _0x2c3731(0xfa),
+            'loCux': function (_0x198e80, _0x4bfb02) {
+                return _0x198e80 === _0x4bfb02;
+            },
+            'OBzuP': function (_0x54d1de, _0x31ab70) {
+                return _0x54d1de === _0x31ab70;
+            },
+            'HiLdH': _0x2c3731(0x91),
+            'pmmXD': _0x2c3731(0xe7),
+            'MlEoC': function (_0x32b484) {
+                return _0x32b484();
+            },
+            'bIxbi': function (_0x43af45, _0x4494d7) {
+                return _0x43af45(_0x4494d7);
+            },
+            'UiNwQ': _0x2c3731(0xa2) + _0x2c3731(0xcd) + _0x2c3731(0xf2)
+        }, _0x53c03f = document[_0x2c3731(0x94) + _0x2c3731(0x8d)](_0x3f7e3c[_0x2c3731(0xe5)])[_0x2c3731(0xaa)][_0x2c3731(0xc5)](), _0x37b8f4 = document[_0x2c3731(0x94) + _0x2c3731(0x8d)](_0x3f7e3c[_0x2c3731(0x71)])[_0x2c3731(0xaa)][_0x2c3731(0xc5)]();
+    _0x3f7e3c[_0x2c3731(0x9d)](_0x53c03f, adminUser) && _0x3f7e3c[_0x2c3731(0x89)](_0x37b8f4, adminPass) ? (loginDiv[_0x2c3731(0xb7)][_0x2c3731(0x92)] = _0x3f7e3c[_0x2c3731(0x96)], painelDiv[_0x2c3731(0xb7)][_0x2c3731(0x92)] = _0x3f7e3c[_0x2c3731(0x87)], _0x3f7e3c[_0x2c3731(0xb9)](carregarAvaliacoes)) : _0x3f7e3c[_0x2c3731(0x90)](alert, _0x3f7e3c[_0x2c3731(0xc7)]);
 });
-
-// === LISTAR AVALIAÇÕES ===
-const lista = document.getElementById("listaAvaliacoes");
-const totalAtivasSpan = document.getElementById("totalAtivas");
-const totalExcluidasSpan = document.getElementById("totalExcluidas");
-const buscaInput = document.getElementById("buscaAvaliacoes");
-
-let avaliacoesAtuais = {};  // armazenar avaliações localmente
-
+const lista = document[_0x3fa3b8(0x94) + _0x3fa3b8(0x8d)](_0x3fa3b8(0x93) + _0x3fa3b8(0x74)), totalAtivasSpan = document[_0x3fa3b8(0x94) + _0x3fa3b8(0x8d)](_0x3fa3b8(0xde) + 's'), totalExcluidasSpan = document[_0x3fa3b8(0x94) + _0x3fa3b8(0x8d)](_0x3fa3b8(0x8e) + _0x3fa3b8(0xe6)), buscaInput = document[_0x3fa3b8(0x94) + _0x3fa3b8(0x8d)](_0x3fa3b8(0xf8) + _0x3fa3b8(0x74));
+function _0x59db() {
+    const _0x3efe38 = [
+        '0599-defau',
+        '7665102nFSxej',
+        'T5Uta-XhE',
+        'user',
+        'GyNdc',
+        'avaliacoes',
+        'orretos.',
+        'key',
+        '@jk',
+        'p\x20strong',
+        '/button>\x0a\x20',
+        'dataset',
+        'buscaAvali',
+        'om\x20sucesso',
+        'pass',
+        'MaCBj',
+        'createElem',
+        'Mmgkk',
+        '-20599',
+        '-20599.fir',
+        'painel',
+        '3179256HKJizW',
+        'tDZiD',
+        'GpbtU',
+        'className',
+        'acoes',
+        'target',
+        'flex',
+        'ebasestora',
+        'innerHTML',
+        'yFhm5X3Dy-',
+        'KPoaq',
+        'https://av',
+        'ge.app',
+        'addEventLi',
+        'BTgDH',
+        'n-excluir\x22',
+        '10LJYHKZ',
+        'aliacoes-2',
+        'jd84dHyU4U',
+        '1003621715',
+        'then',
+        'AsFQd',
+        'nome',
+        'pmmXD',
+        'input',
+        'OBzuP',
+        'eb82bed77a',
+        'vbSXU',
+        'om/',
+        'ById',
+        'totalExclu',
+        'excluída\x20c',
+        'bIxbi',
+        'none',
+        'display',
+        'listaAvali',
+        'getElement',
+        'XsXnC',
+        'HiLdH',
+        '7GzFmNZ',
+        '297928ZbHHbs',
+        '\x20\x20\x20\x20\x20',
+        'click',
+        '\x20data-id=\x22',
+        '\x20\x20\x20\x20\x20<p>',
+        'loCux',
+        'AIzaSyBF_-',
+        '.avaliacao',
+        'ebaseapp.c',
+        'jk2122391',
+        'Usuário\x20ou',
+        '1:10036217',
+        'nsyra',
+        '15829:web:',
+        'div',
+        'querySelec',
+        'tCYCb',
+        'confirmNao',
+        'value',
+        '\x0a\x20\x20\x20\x20\x20\x20\x20\x20<',
+        '29887099BOKpds',
+        '\x20⭐</p>\x0a\x20\x20\x20',
+        '\x20class=\x22bt',
+        'Erro\x20ao\x20ex',
+        'WkmIu',
+        'p><strong>',
+        '.btn-exclu',
+        'login',
+        'avaliacao-',
+        '69e570324d',
+        'textConten',
+        'style',
+        'estrelas',
+        'MlEoC',
+        'confirmSim',
+        '19452kxaEjH',
+        'rebaseio.c',
+        'EhjPp',
+        'toLowerCas',
+        'fvOba',
+        '\x22>Excluir<',
+        'modalConfi',
+        'eukrq',
+        '829',
+        'stener',
+        'trim',
+        '</p>\x0a\x20\x20\x20\x20\x20',
+        'UiNwQ',
+        'AFrfy',
+        'lt-rtdb.fi',
+        'Avaliação\x20',
+        'catch',
+        'bvDpk',
+        '\x20senha\x20inc',
+        'hDRGP',
+        'appendChil',
+        'forEach',
+        'CICEE',
+        'admin',
+        '\x20\x20\x20<button',
+        'comentario',
+        '-admin',
+        '3hAWIRB',
+        'ent',
+        'includes',
+        'sZApT',
+        'HrVjV',
+        'tor',
+        'val',
+        'torAll',
+        'totalAtiva',
+        'Anônimo',
+        '8158761SNINCp',
+        'wlpTv',
+        'NSGpO',
+        '</strong>\x20',
+        '105aBzAht',
+        'wvDsd',
+        'idas',
+        'block',
+        'loginBtn',
+        'cluir:\x20',
+        'aVOjJ',
+        '4018095pfUrST'
+    ];
+    _0x59db = function () {
+        return _0x3efe38;
+    };
+    return _0x59db();
+}
+let avaliacoesAtuais = {};
 function carregarAvaliacoes() {
-  const avaliacoesRef = ref(db, "avaliacoes");
-
-  onValue(avaliacoesRef, (snapshot) => {
-    lista.innerHTML = "";
-    avaliacoesAtuais = {}; // resetar
-
-    let totalAtivas = 0;
-    let totalExcluidas = 0;
-
-    snapshot.forEach((child) => {
-      const data = child.val();
-      const id = child.key;
-      avaliacoesAtuais[id] = data;
-
-      totalAtivas++; // contador de ativas
-
-      const div = document.createElement("div");
-      div.className = "avaliacao-admin";
-      div.dataset.id = id;
-      div.innerHTML = `
-        <p><strong>${data.nome || "Anônimo"}</strong> — ${data.estrelas} ⭐</p>
-        <p>${data.comentario}</p>
-        <button class="btn-excluir" data-id="${id}">Excluir</button>
-      `;
-      lista.appendChild(div);
+    const _0x125fcd = _0x3fa3b8, _0x2fdc83 = {
+            'nsyra': function (_0x91a845, _0x2b2e35) {
+                return _0x91a845(_0x2b2e35);
+            },
+            'EhjPp': _0x125fcd(0x9a),
+            'eukrq': _0x125fcd(0xa6),
+            'MaCBj': _0x125fcd(0xb4) + _0x125fcd(0xd2),
+            'HrVjV': _0x125fcd(0xdf),
+            'hDRGP': _0x125fcd(0xb2) + 'ir',
+            'GpbtU': function (_0x22957e, _0xc61bd9, _0x30b799) {
+                return _0x22957e(_0xc61bd9, _0x30b799);
+            },
+            'KPoaq': _0x125fcd(0xf1)
+        }, _0x10e792 = _0x2fdc83[_0x125fcd(0x72)](ref, db, _0x2fdc83[_0x125fcd(0x7a)]);
+    _0x2fdc83[_0x125fcd(0x72)](onValue, _0x10e792, _0x3a1c2a => {
+        const _0x16b040 = _0x125fcd, _0x321dca = {
+                'AsFQd': _0x2fdc83[_0x16b040(0xc2)],
+                'WkmIu': _0x2fdc83[_0x16b040(0xfb)],
+                'AFrfy': _0x2fdc83[_0x16b040(0xda)]
+            };
+        lista[_0x16b040(0x78)] = '', avaliacoesAtuais = {};
+        let _0x50b76c = 0x1 * -0x1f04 + 0x1339 + 0xbcb, _0x189926 = 0x84d + 0x1 * 0x1381 + -0x1bce * 0x1;
+        _0x3a1c2a[_0x16b040(0xd0)](_0x139ef2 => {
+            const _0x33a226 = _0x16b040, _0x38b2aa = _0x139ef2[_0x33a226(0xdc)](), _0x2093a7 = _0x139ef2[_0x33a226(0xf3)];
+            avaliacoesAtuais[_0x2093a7] = _0x38b2aa, _0x50b76c++;
+            const _0x52b15f = document[_0x33a226(0xfc) + _0x33a226(0xd7)](_0x321dca[_0x33a226(0x85)]);
+            _0x52b15f[_0x33a226(0x73)] = _0x321dca[_0x33a226(0xb0)], _0x52b15f[_0x33a226(0xf7)]['id'] = _0x2093a7, _0x52b15f[_0x33a226(0x78)] = _0x33a226(0xab) + _0x33a226(0xb1) + (_0x38b2aa[_0x33a226(0x86)] || _0x321dca[_0x33a226(0xc8)]) + (_0x33a226(0xe3) + '—\x20') + _0x38b2aa[_0x33a226(0xb8)] + (_0x33a226(0xad) + _0x33a226(0x9c)) + _0x38b2aa[_0x33a226(0xd4)] + (_0x33a226(0xc6) + _0x33a226(0xd3) + _0x33a226(0xae) + _0x33a226(0x7f) + _0x33a226(0x9b)) + _0x2093a7 + (_0x33a226(0xc0) + _0x33a226(0xf6) + _0x33a226(0x99)), lista[_0x33a226(0xcf) + 'd'](_0x52b15f);
+        }), totalAtivasSpan[_0x16b040(0xb6) + 't'] = _0x50b76c, totalExcluidasSpan[_0x16b040(0xb6) + 't'] = _0x189926, document[_0x16b040(0xa7) + _0x16b040(0xdd)](_0x2fdc83[_0x16b040(0xce)])[_0x16b040(0xd0)](_0x4125e3 => {
+            const _0x46a884 = _0x16b040, _0x2fff06 = {
+                    'XsXnC': function (_0x5b60b6, _0x52f28c) {
+                        const _0x33e908 = _0x49ad;
+                        return _0x2fdc83[_0x33e908(0xa4)](_0x5b60b6, _0x52f28c);
+                    }
+                };
+            _0x4125e3[_0x46a884(0x7d) + _0x46a884(0xc4)](_0x2fdc83[_0x46a884(0xbd)], _0x26ef59 => {
+                const _0x3cfccc = _0x46a884, _0x503f9d = _0x26ef59[_0x3cfccc(0x75)][_0x3cfccc(0xf7)]['id'];
+                _0x2fff06[_0x3cfccc(0x95)](abrirModal, _0x503f9d);
+            });
+        });
     });
-
-    totalAtivasSpan.textContent = totalAtivas;
-    totalExcluidasSpan.textContent = totalExcluidas;
-
-    // adicionar evento aos botões de excluir
-    document.querySelectorAll(".btn-excluir").forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        const id = e.target.dataset.id;
-        abrirModal(id);
-      });
-    });
-  });
 }
-
-// === MODAL DE CONFIRMAÇÃO ===
-const modal = document.getElementById("modalConfirm");
-const confirmSim = document.getElementById("confirmSim");
-const confirmNao = document.getElementById("confirmNao");
+const modal = document[_0x3fa3b8(0x94) + _0x3fa3b8(0x8d)](_0x3fa3b8(0xc1) + 'rm'), confirmSim = document[_0x3fa3b8(0x94) + _0x3fa3b8(0x8d)](_0x3fa3b8(0xba)), confirmNao = document[_0x3fa3b8(0x94) + _0x3fa3b8(0x8d)](_0x3fa3b8(0xa9));
 let avaliacaoSelecionada = null;
-
-function abrirModal(id) {
-  avaliacaoSelecionada = id;
-  modal.style.display = "flex";
+function abrirModal(_0x41db61) {
+    const _0x29f2bb = _0x3fa3b8, _0x4b1f29 = { 'CICEE': _0x29f2bb(0x76) };
+    avaliacaoSelecionada = _0x41db61, modal[_0x29f2bb(0xb7)][_0x29f2bb(0x92)] = _0x4b1f29[_0x29f2bb(0xd1)];
 }
-
-confirmNao.addEventListener("click", () => {
-  modal.style.display = "none";
-  avaliacaoSelecionada = null;
+confirmNao[_0x3fa3b8(0x7d) + _0x3fa3b8(0xc4)](_0x3fa3b8(0x9a), () => {
+    const _0x30970f = _0x3fa3b8, _0x1622b6 = { 'BTgDH': _0x30970f(0x91) };
+    modal[_0x30970f(0xb7)][_0x30970f(0x92)] = _0x1622b6[_0x30970f(0x7e)], avaliacaoSelecionada = null;
+}), confirmSim[_0x3fa3b8(0x7d) + _0x3fa3b8(0xc4)](_0x3fa3b8(0x9a), () => {
+    const _0x7b50ad = _0x3fa3b8, _0x4d05a9 = {
+            'GyNdc': function (_0xf72628, _0x18bb9a) {
+                return _0xf72628(_0x18bb9a);
+            },
+            'vbSXU': _0x7b50ad(0x91)
+        };
+    avaliacaoSelecionada && (_0x4d05a9[_0x7b50ad(0xf0)](excluirAvaliacao, avaliacaoSelecionada), avaliacaoSelecionada = null), modal[_0x7b50ad(0xb7)][_0x7b50ad(0x92)] = _0x4d05a9[_0x7b50ad(0x8b)];
 });
-
-confirmSim.addEventListener("click", () => {
-  if (avaliacaoSelecionada) {
-    excluirAvaliacao(avaliacaoSelecionada);
-    avaliacaoSelecionada = null;
-  }
-  modal.style.display = "none";
-});
-
-// === FUNÇÃO EXCLUIR ===
-function excluirAvaliacao(id) {
-  const avaliacaoRef = ref(db, "avaliacoes/" + id);
-  remove(avaliacaoRef)
-    .then(() => alert("Avaliação excluída com sucesso!"))
-    .catch((err) => alert("Erro ao excluir: " + err));
+function _0x49ad(_0x277c5a, _0x178c9f) {
+    const _0x5c0a29 = _0x59db();
+    return _0x49ad = function (_0x61e445, _0x5b3288) {
+        _0x61e445 = _0x61e445 - (0x55 * -0x3a + 0x15da * -0x1 + 0x298a);
+        let _0x468ba1 = _0x5c0a29[_0x61e445];
+        return _0x468ba1;
+    }, _0x49ad(_0x277c5a, _0x178c9f);
 }
-
-// === FILTRAR BUSCA ===
-buscaInput.addEventListener("input", () => {
-  const termo = buscaInput.value.toLowerCase();
-
-  document.querySelectorAll(".avaliacao-admin").forEach(div => {
-    const nome = div.querySelector("p strong").textContent.toLowerCase();
-    const comentario = div.querySelectorAll("p")[1].textContent.toLowerCase();
-    div.style.display = (nome.includes(termo) || comentario.includes(termo)) ? "block" : "none";
-  });
+function excluirAvaliacao(_0x1acb8d) {
+    const _0x139bb8 = _0x3fa3b8, _0x663183 = {
+            'fvOba': function (_0x132573, _0x1e1ab5, _0x49be51) {
+                return _0x132573(_0x1e1ab5, _0x49be51);
+            },
+            'aVOjJ': function (_0x532a71, _0x4fc9cb) {
+                return _0x532a71 + _0x4fc9cb;
+            },
+            'sZApT': _0x139bb8(0xf1) + '/',
+            'bvDpk': function (_0x29b9b9, _0x951ed8) {
+                return _0x29b9b9(_0x951ed8);
+            }
+        }, _0x279314 = _0x663183[_0x139bb8(0xbf)](ref, db, _0x663183[_0x139bb8(0xea)](_0x663183[_0x139bb8(0xd9)], _0x1acb8d));
+    _0x663183[_0x139bb8(0xcc)](remove, _0x279314)[_0x139bb8(0x84)](() => alert(_0x139bb8(0xca) + _0x139bb8(0x8f) + _0x139bb8(0xf9) + '!'))[_0x139bb8(0xcb)](_0x18b82e => alert(_0x139bb8(0xaf) + _0x139bb8(0xe9) + _0x18b82e));
+}
+buscaInput[_0x3fa3b8(0x7d) + _0x3fa3b8(0xc4)](_0x3fa3b8(0x88), () => {
+    const _0x33c2c6 = _0x3fa3b8, _0x44fc08 = {
+            'wlpTv': _0x33c2c6(0xf5),
+            'tCYCb': _0x33c2c6(0xe7),
+            'Mmgkk': _0x33c2c6(0x91),
+            'NSGpO': _0x33c2c6(0x9f) + _0x33c2c6(0xd5)
+        }, _0x127fac = buscaInput[_0x33c2c6(0xaa)][_0x33c2c6(0xbe) + 'e']();
+    document[_0x33c2c6(0xa7) + _0x33c2c6(0xdd)](_0x44fc08[_0x33c2c6(0xe2)])[_0x33c2c6(0xd0)](_0x59a5a0 => {
+        const _0x508cb5 = _0x33c2c6, _0x591deb = _0x59a5a0[_0x508cb5(0xa7) + _0x508cb5(0xdb)](_0x44fc08[_0x508cb5(0xe1)])[_0x508cb5(0xb6) + 't'][_0x508cb5(0xbe) + 'e'](), _0x5c1c3d = _0x59a5a0[_0x508cb5(0xa7) + _0x508cb5(0xdd)]('p')[0xbf8 + -0x1e2e + -0x1 * -0x1237][_0x508cb5(0xb6) + 't'][_0x508cb5(0xbe) + 'e']();
+        _0x59a5a0[_0x508cb5(0xb7)][_0x508cb5(0x92)] = _0x591deb[_0x508cb5(0xd8)](_0x127fac) || _0x5c1c3d[_0x508cb5(0xd8)](_0x127fac) ? _0x44fc08[_0x508cb5(0xa8)] : _0x44fc08[_0x508cb5(0xfd)];
+    });
 });
