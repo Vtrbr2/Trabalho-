@@ -57,12 +57,36 @@
             align-items: center;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--color-primary);
-            text-decoration: none;
-        }
+        /* ===== LOGO ===== */
+.logo a {
+    color: #6d28d9; /* Roxo vibrante */
+    text-decoration: none;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.logo a:hover {
+    color: #2563eb; /* Azul suave ao passar o mouse */
+}
+/* Logo com imagem */
+.logo img {
+    height: 60px; /* tamanho ideal para a navbar */
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+/* Efeito ao rolar */
+.navbar.scrolled .logo img {
+    height: 45px; /* diminui levemente ao rolar */
+}
+
+/* Efeito hover opcional */
+.logo a:hover img {
+    transform: scale(1.05);
+}
 
         .nav-menu {
             display: flex;
