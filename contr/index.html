@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Friday 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: white;
+            color: #333;
+        }
+
+        /* Navbar */
+        nav {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 1.2rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 8rem 5%;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-btn {
+            background: white;
+            color: #667eea;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .hero-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Cronômetro */
+        .countdown-section {
+            padding: 4rem 5%;
+            text-align: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+        }
+
+        .countdown-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #ff6b6b;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            min-width: 120px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .countdown-item .number {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            display: block;
+        }
+
+        .countdown-item .label {
+            font-size: 1rem;
+            color: #ddd;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+        }
+
+        /* Seção Sobre */
+        .about {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #2d2d2d;
+        }
+
+        .about p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Galeria de Produtos */
+        .gallery {
+            padding: 5rem 5%;
+            background: #f8f9fa;
+        }
+
+        .gallery h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #2d2d2d;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            aspect-ratio: 1;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay,
+        .gallery-item.active .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-description {
+            color: white;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-description,
+        .gallery-item.active .gallery-description {
+            transform: translateY(0);
+        }
+
+        .gallery-description h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-description p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #ff6b6b;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ff6b6b;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #999;
+        }
+
+        /* Animações */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .countdown {
+                gap: 1rem;
+            }
+
+            .countdown-item {
+                min-width: 80px;
+                padding: 1.5rem 1rem;
+            }
+
+            .countdown-item .number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <ul>
+            <li><a href="#home">Início</a></li>
+            <li><a href="#countdown">Black Friday</a></li>
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#gallery">Produtos</a></li>
+            <li><a href="#footer">Contato</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>BLACK FRIDAY 2025</h1>
+            <p>As Melhores Ofertas do Ano Estão Chegando!</p>
+            <button class="hero-btn">Explorar Ofertas</button>
+        </div>
+    </section>
+
+    <!-- Cronômetro -->
+    <section id="countdown" class="countdown-section">
+        <h2>⏰ Contagem Regressiva Black Friday</h2>
+        <div class="countdown">
+            <div class="countdown-item">
+                <span class="number" id="days">00</span>
+                <span class="label">Dias</span>
+            </div>
+            <div class="countdown-item">
+                <span class="number" id="hours">00</span>
+                <span class="label">Horas</span>
+            </div>
+            <div class="countdown-item">
+                <span class="number" id="minutes">00</span>
+                <span class="label">Minutos</span>
+            </div>
+            <div class="countdown-item">
+                <span class="number" id="seconds">00</span>
+                <span class="label">Segundos</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Sobre -->
+    <section id="about" class="about">
+        <h2>Sobre Nós</h2>
+        <p>Somos referência em ofertas incríveis e produtos de qualidade. Nossa missão é proporcionar a melhor experiência de compra durante a Black Friday, com descontos que chegam até 70% em produtos selecionados.</p>
+        <p>Há mais de 10 anos no mercado, conquistamos a confiança de milhares de clientes com nossa dedicação à excelência e compromisso com a satisfação total.</p>
+    </section>
+
+    <!-- Galeria de Produtos -->
+    <section id="gallery" class="gallery">
+        <h2>Produtos em Destaque</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x400/667eea/ffffff?text=Produto+1" alt="Produto 1">
+                <div class="gallery-overlay">
+                    <div class="gallery-description">
+                        <h3>Smartphone Premium</h3>
+                        <p>Tecnologia de ponta com 50% de desconto</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x400/764ba2/ffffff?text=Produto+2" alt="Produto 2">
+                <div class="gallery-overlay">
+                    <div class="gallery-description">
+                        <h3>Notebook Gamer</h3>
+                        <p>Performance máxima para jogos</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x400/f093fb/ffffff?text=Produto+3" alt="Produto 3">
+                <div class="gallery-overlay">
+                    <div class="gallery-description">
+                        <h3>Smart TV 4K</h3>
+                        <p>Experiência cinematográfica em casa</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x400/4facfe/ffffff?text=Produto+4" alt="Produto 4">
+                <div class="gallery-overlay">
+                    <div class="gallery-description">
+                        <h3>Fone Bluetooth</h3>
+                        <p>Som cristalino e cancelamento de ruído</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x400/00f2fe/ffffff?text=Produto+5" alt="Produto 5">
+                <div class="gallery-overlay">
+                    <div class="gallery-description">
+                        <h3>Câmera Profissional</h3>
+                        <p>Capture momentos em alta definição</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x400/ff6b6b/ffffff?text=Produto+6" alt="Produto 6">
+                <div class="gallery-overlay">
+                    <div class="gallery-description">
+                        <h3>Smartwatch</h3>
+                        <p>Monitore sua saúde com estilo</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x400/ee5a6f/ffffff?text=Produto+7" alt="Produto 7">
+                <div class="gallery-overlay">
+                    <div class="gallery-description">
+                        <h3>Tablet Pro</h3>
+                        <p>Produtividade em qualquer lugar</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x400/c471ed/ffffff?text=Produto+8" alt="Produto 8">
+                <div class="gallery-overlay">
+                    <div class="gallery-description">
+                        <h3>Console Next-Gen</h3>
+                        <p>Nova geração de jogos</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x400/12c2e9/ffffff?text=Produto+9" alt="Produto 9">
+                <div class="gallery-overlay">
+                    <div class="gallery-description">
+                        <h3>Caixa de Som</h3>
+                        <p>Som potente para suas festas</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x400/c471f5/ffffff?text=Produto+10" alt="Produto 10">
+                <div class="gallery-overlay">
+                    <div class="gallery-description">
+                        <h3>Drone 4K</h3>
+                        <p>Voe alto com imagens incríveis</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x400/fa709a/ffffff?text=Produto+11" alt="Produto 11">
+                <div class="gallery-overlay">
+                    <div class="gallery-description">
+                        <h3>Mouse Gamer</h3>
+                        <p>Precisão e velocidade</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x400/fee140/ffffff?text=Produto+12" alt="Produto 12">
+                <div class="gallery-overlay">
+                    <div class="gallery-description">
+                        <h3>Teclado Mecânico</h3>
+                        <p>Digitação profissional</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x400/30cfd0/ffffff?text=Produto+13" alt="Produto 13">
+                <div class="gallery-overlay">
+                    <div class="gallery-description">
+                        <h3>Monitor Ultrawide</h3>
+                        <p>Mais espaço, mais produtividade</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x400/a8edea/ffffff?text=Produto+14" alt="Produto 14">
+                <div class="gallery-overlay">
+                    <div class="gallery-description">
+                        <h3>Webcam HD</h3>
+                        <p>Reuniões com qualidade</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x400/fed6e3/ffffff?text=Produto+15" alt="Produto 15">
+                <div class="gallery-overlay">
+                    <div class="gallery-description">
+                        <h3>Carregador Portátil</h3>
+                        <p>Energia para o dia todo</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x400/a8e6cf/ffffff?text=Produto+16" alt="Produto 16">
+                <div class="gallery-overlay">
+                    <div class="gallery-description">
+                        <h3>Microfone Condensador</h3>
+                        <p>Áudio profissional para streams</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x400/ffd3b6/ffffff?text=Produto+17" alt="Produto 17">
+                <div class="gallery-overlay">
+                    <div class="gallery-description">
+                        <h3>Hub USB-C</h3>
+                        <p>Conectividade expandida</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x400/ffaaa5/ffffff?text=Produto+18" alt="Produto 18">
+                <div class="gallery-overlay">
+                    <div class="gallery-description">
+                        <h3>SSD Externo</h3>
+                        <p>Armazenamento rápido e seguro</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x400/ff8b94/ffffff?text=Produto+19" alt="Produto 19">
+                <div class="gallery-overlay">
+                    <div class="gallery-description">
+                        <h3>Impressora Multifuncional</h3>
+                        <p>Imprima, copie e digitalize</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x400/b4f8c8/ffffff?text=Produto+20" alt="Produto 20">
+                <div class="gallery-overlay">
+                    <div class="gallery-description">
+                        <h3>Roteador Wi-Fi 6</h3>
+                        <p>Internet ultra rápida</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Empresa</h3>
+                <ul>
+                    <li><a href="#">Sobre Nós</a></li>
+                    <li><a href="#">Nossa História</a></li>
+                    <li><a href="#">Trabalhe Conosco</a></li>
+                    <li><a href="#">Imprensa</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Atendimento</h3>
+                <ul>
+                    <li><a href="#">Central de Ajuda</a></li>
+                    <li><a href="#">Política de Trocas</a></li>
+                    <li><a href="#">Rastreamento</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Institucional</h3>
+                <ul>
+                    <li><a href="#">Termos de Uso</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Política de Cookies</a></li>
+                    <li><a href="#">Segurança</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Redes Sociais</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Black Friday Store. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Cronômetro Black Friday
+        const countDownDate = new Date("November 29, 2025 00:00:00").getTime();
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").textContent = days.toString().padStart(2, '0');
+            document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("days").textContent = "00";
+                document.getElementById("hours").textContent = "00";
+                document.getElementById("minutes").textContent = "00";
+                document.getElementById("seconds").textContent = "00";
+            }
+        }, 1000);
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Interação mobile para galeria
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        galleryItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active de todos
+                galleryItems.forEach(i => i.classList.remove('active'));
+                // Adiciona active no clicado
+                this.classList.add('active');
+            });
+        });
+
+        // Remove active ao clicar fora
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.gallery-item')) {
+                galleryItems.forEach(i => i.classList.remove('active'));
+            }
+        });
+    </script>
+</body>
+  </html>
