@@ -298,7 +298,9 @@
         /* Galeria de Produtos */
         .gallery {
             padding: 5rem 5%;
-            background: #A9A9A9;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+           
+         /*   background: #A9A9A9; */
         }
 
         .gallery h2 {
