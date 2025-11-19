@@ -259,7 +259,7 @@
         }
 
         .faq-question:hover {
-            background: #e9ecef;
+            background:#000000;
         }
 
         .faq-question::after {
