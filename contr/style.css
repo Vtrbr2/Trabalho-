@@ -518,6 +518,8 @@
   overflow: hidden;
   box-shadow: 0 3px 12px rgba(0,0,0,0.06);
   transition: all .3s ease;
+  margin-bottom: 20px; /* espaço entre cada item */
+
 }
 
 .faq-item.active {
