@@ -256,6 +256,7 @@
             font-weight: 600;
             font-size: 1.1rem;
             transition: background 0.3s ease;
+            color:#000000 !important;
         }
 
         .faq-question:hover {
