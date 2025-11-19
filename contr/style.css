@@ -248,7 +248,7 @@
 
         .faq-question {
             padding: 1.5rem;
-            background:#000000;
+            background: #f8f9fa;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -265,7 +265,7 @@
         .faq-question::after {
             content: '+';
             font-size: 1.5rem;
-            color: #667eea;
+            color: #000000;
             transition: transform 0.3s ease;
         }
 
