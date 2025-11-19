@@ -198,17 +198,22 @@
             z-index: 1;
         }
 
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            animation: fadeInDown 1s ease;
-        }
+        .hero-content h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
-        .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease;
-        }
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  background: linear-gradient(90deg, #6a11cb, #2db2ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
         .hero-btn {
             background: white;
