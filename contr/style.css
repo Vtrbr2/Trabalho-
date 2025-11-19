@@ -490,3 +490,27 @@
                 font-size: 2.5rem;
             }
         }
+/* FAQ ANSWER */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 18px;
+  color: #444;
+  line-height: 1.6;
+  transition: max-height 0.35s ease, padding 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 300px; /* espaço suficiente */
+  padding-bottom: 18px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 600px) {
+  .faq-title {
+    font-size: 1.8rem;
+  }
+  .faq-question {
+    font-size: 1rem;
+  }
+    }
