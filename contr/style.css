@@ -248,7 +248,7 @@
 
         .faq-question {
             padding: 1.5rem;
-            background: #f8f9fa;
+            background:#000000;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
