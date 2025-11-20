@@ -269,10 +269,6 @@
             margin-bottom: 1rem;
         }
 
-        /* Seção de Portfólio */
- 
-
-        
         /* Galeria de Produtos */
         .gallery {
             padding: 5rem 5%;
@@ -361,6 +357,45 @@
             font-size: 1rem;
             line-height: 1.5;
         }
+
+
+
+       
+
+        /* Mobile Styles */
+        @media (max-width: 767px) {
+            .main-content {
+                padding: 20px;
+            }
+
+            .content-box {
+                padding: 30px 20px;
+            }
+
+            .content-box h1 {
+                font-size: 24px;
+            }
+
+            .content-box p {
+                font-size: 14px;
+            }
+
+           
+        /* Animações */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        
+
         
 
         
