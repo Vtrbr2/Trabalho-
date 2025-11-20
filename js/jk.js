@@ -29,3 +29,15 @@ document.querySelectorAll(".faq-item").forEach((item) => {
     item.classList.toggle("active");
   });
 });
+
+
+document.addEventListener('click', function(e){
+  const btn = e.target.closest('.servico-btn');
+  if (!btn) return;
+  // encontra o card pai e pega a URL
+  const card = btn.closest('.servico-card');
+  const href = (card && (card.dataset.href || card.getAttribute('data-href'))) || btn.dataset.href;
+  if (!href) return;
+  // abre no mesmo tab (use window.open(href, '_blank') para nova aba)
+  window.location.href = href;
+});
