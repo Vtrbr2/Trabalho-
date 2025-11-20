@@ -347,6 +347,67 @@ function _0x53c8() {
  </section>   
     
 
+		<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // Força navegação quando houver <a> pai (captura mesmo com CSS quebrado)
+  document.addEventListener('click', function (ev) {
+    const a = ev.target.closest('a');
+    if (!a) return;
+    // só agir para links dentro da seção de serviços
+    if (!a.closest('.servicos')) return;
+    ev.preventDefault(); // impede comportamento nativo para forçar o nosso
+    const href = a.getAttribute('href') || '';
+    if (href && href !== '#' && href.trim() !== '') {
+      // navega no mesmo tab
+      window.location.href = href;
+    } else {
+      // se for "#" ou vazio, tenta buscar data-href (fallback)
+      const fallback = a.dataset.href || a.querySelector('[data-href]')?.dataset?.href;
+      if (fallback) window.location.href = fallback;
+    }
+  }, true); // use capture para interceptar antes de qualquer handler problemático
+
+  // Torna os .servico-card clicáveis (caso a tag <a> esteja faltando ou CSS bloqueie clique)
+  document.querySelectorAll('.servico-card').forEach(card => {
+    card.style.cursor = 'pointer';
+    // evita dois disparos: se já estiver dentro de <a>, usamos o href dessa <a>
+    card.addEventListener('click', function (ev) {
+      const a = card.closest('a');
+      if (a) {
+        const href = a.getAttribute('href') || '';
+        if (href && href !== '#' && href.trim() !== '') {
+          ev.preventDefault();
+          window.location.href = href;
+          return;
+        }
+        const fallback = a.dataset.href || a.querySelector('[data-href]')?.dataset?.href;
+        if (fallback) {
+          ev.preventDefault();
+          window.location.href = fallback;
+          return;
+        }
+      }
+      // se não tiver <a>, procura um atributo data-href no próprio card
+      const own = card.dataset.href;
+      if (own) {
+        ev.preventDefault();
+        window.location.href = own;
+      }
+    });
+    // permite navegação por teclado (Enter)
+    card.setAttribute('tabindex', 0);
+    card.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Enter' || ev.key === ' ') card.click();
+    });
+  });
+
+  // Força pointer-events caso CSS tenha bloqueado (opcional — comente se não quiser alterar estilos)
+  const container = document.querySelector('.servicos-container');
+  if (container) {
+    container.style.pointerEvents = 'auto';
+  }
+});
+		</script>
 		
    <section class="sobre-nos" id="sobre">
   <div class="sobre-container">
