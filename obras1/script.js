@@ -53,3 +53,21 @@ window.addEventListener("scroll", () => {
     nav.classList.remove("scrolled");
   }
 });
+        // Interação mobile para galeria
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        galleryItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active de todos
+                galleryItems.forEach(i => i.classList.remove('active'));
+                // Adiciona active no clicado
+                this.classList.add('active');
+            });
+        });
+
+        // Remove active ao clicar fora
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.gallery-item')) {
+                galleryItems.forEach(i => i.classList.remove('active'));
+            }
+        });
