@@ -1,1 +1,772 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reformas e Ampliações</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: white;
+            color: #333;
+        }
+
+        /* Navbar */
+        nav {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 1.2rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section Reformas */
+        .hero-reforms {
+            margin-top: 80px;
+            background: linear-gradient(135deg, #2d5016 0%, #1e3a0f 100%);
+            padding: 8rem 5%;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-reforms::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-reforms-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-reforms h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease;
+            color: #86efac;
+        }
+
+        .hero-reforms p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease;
+            color: #d1fae5;
+        }
+
+        .hero-reforms-btn {
+            background: #22c55e;
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .hero-reforms-btn:hover {
+            background: #16a34a;
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
+        }
+
+        /* Seção de Destaques */
+        .highlights {
+            background: linear-gradient(135deg, #f0fdf4 0%, #f7fee7 100%);
+            padding: 4rem 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .highlight-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid #22c55e;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(34, 197, 94, 0.2);
+        }
+
+        .highlight-card h3 {
+            color: #16a34a;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .highlight-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .highlight-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Seção de Portfólio */
+        .portfolio {
+            padding: 5rem 5%;
+            background: white;
+        }
+
+        .portfolio h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #1e3a0f;
+        }
+
+        .portfolio-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 4rem;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .portfolio-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            transition: all 0.4s ease;
+            aspect-ratio: 1;
+            group: portfolio-card;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(34, 197, 94, 0.3);
+        }
+
+        .portfolio-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+
+        .portfolio-card:hover img {
+            transform: scale(1.15) rotate(2deg);
+            filter: brightness(0.7);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(30, 58, 15, 0.95) 0%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 2;
+        }
+
+        .portfolio-card:hover .portfolio-overlay,
+        .portfolio-card.active .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-content {
+            color: white;
+            transform: translateY(30px);
+            transition: all 0.4s ease;
+        }
+
+        .portfolio-card:hover .portfolio-content,
+        .portfolio-card.active .portfolio-content {
+            transform: translateY(0);
+        }
+
+        .portfolio-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            color: #86efac;
+        }
+
+        .portfolio-content p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #e0e7ff;
+        }
+
+        .portfolio-tag {
+            display: inline-block;
+            background: rgba(34, 197, 94, 0.3);
+            color: #86efac;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            border: 1px solid rgba(34, 197, 94, 0.5);
+        }
+
+        /* Seção de Processo */
+        .process {
+            background: linear-gradient(135deg, #f0fdf4 0%, #f7fee7 100%);
+            padding: 5rem 5%;
+        }
+
+        .process h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: #1e3a0f;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.2);
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+            border-radius: 50%;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            color: #16a34a;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .step p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Seção CTA */
+        .cta-section {
+            background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+            color: white;
+            padding: 4rem 5%;
+            text-align: center;
+            border-radius: 20px;
+            margin: 4rem 5%;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-btn {
+            background: white;
+            color: #16a34a;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #22c55e;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #22c55e;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #999;
+        }
+
+        /* Animações */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .hero-reforms h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-reforms p {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .portfolio h2 {
+                font-size: 2rem;
+            }
+
+            .portfolio-content h3 {
+                font-size: 1.3rem;
+            }
+
+            .process h2 {
+                font-size: 2rem;
+            }
+
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <ul>
+            <li><a href="#home">Início</a></li>
+            <li><a href="#destaques">Destaques</a></li>
+            <li><a href="#portfolio">Portfólio</a></li>
+            <li><a href="#processo">Processo</a></li>
+            <li><a href="#footer">Contato</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-reforms">
+        <div class="hero-reforms-content">
+            <h1>🏗️ Reformas e Ampliações</h1>
+            <p>Transforme sua casa em um espaço dos sonhos</p>
+            <button class="hero-reforms-btn">Solicitar Orçamento</button>
+        </div>
+    </section>
+
+    <!-- Seção de Destaques -->
+    <section id="destaques" class="highlights">
+        <div class="highlight-card">
+            <div class="highlight-icon">✨</div>
+            <h3>Projetos Personalizados</h3>
+            <p>Cada reforma é única. Adaptamos nossas soluções às suas necessidades e estilo de vida.</p>
+        </div>
+        <div class="highlight-card">
+            <div class="highlight-icon">⏱️</div>
+            <h3>Prazos Cumpridos</h3>
+            <p>Entregamos no prazo combinado com qualidade garantida e profissionalismo total.</p>
+        </div>
+        <div class="highlight-card">
+            <div class="highlight-icon">🛠️</div>
+            <h3>Equipe Experiente</h3>
+            <p>Profissionais certificados com mais de 15 anos de experiência no mercado.</p>
+        </div>
+        <div class="highlight-card">
+            <div class="highlight-icon">💰</div>
+            <h3>Melhor Custo-Benefício</h3>
+            <p>Materiais de qualidade com preços competitivos. Parcelamos sua reforma.</p>
+        </div>
+    </section>
+
+    <!-- Seção de Portfólio -->
+    <section id="portfolio" class="portfolio">
+        <h2>Nossa Galeria de Projetos</h2>
+        <p class="portfolio-subtitle">Conheça as transformações que realizamos para nossos clientes</p>
+        <div class="portfolio-grid">
+            <div class="portfolio-card">
+                <img src="https://via.placeholder.com/400x400/86efac/1e3a0f?text=Cozinha+Moderna" alt="Cozinha Moderna">
+                <div class="portfolio-overlay">
+                    <div class="portfolio-content">
+                        <h3>Cozinha Moderna</h3>
+                        <p>Espaço integrado com ilha central e acabamento em mármore</p>
+                        <span class="portfolio-tag">Cozinha</span>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <img src="https://via.placeholder.com/400x400/86efac/1e3a0f?text=Banheiro+Luxo" alt="Banheiro Luxo">
+                <div class="portfolio-overlay">
+                    <div class="portfolio-content">
+                        <h3>Banheiro de Luxo</h3>
+                        <p>Revestimento em porcelato e vista panorâmica</p>
+                        <span class="portfolio-tag">Banheiro</span>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <img src="https://via.placeholder.com/400x400/86efac/1e3a0f?text=Sala+Integrada" alt="Sala Integrada">
+                <div class="portfolio-overlay">
+                    <div class="portfolio-content">
+                        <h3>Sala Integrada</h3>
+                        <p>Ambiente amplo com estrutura de vidro e madeira</p>
+                        <span class="portfolio-tag">Sala</span>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <img src="https://via.placeholder.com/400x400/86efac/1e3a0f?text=Varanda+Gourmet" alt="Varanda Gourmet">
+                <div class="portfolio-overlay">
+                    <div class="portfolio-content">
+                        <h3>Varanda Gourmet</h3>
+                        <p>Área externa com churrasqueira e piscina aquecida</p>
+                        <span class="portfolio-tag">Ampliação</span>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <img src="https://via.placeholder.com/400x400/86efac/1e3a0f?text=Quarto+Master" alt="Quarto Master">
+                <div class="portfolio-overlay">
+                    <div class="portfolio-content">
+                        <h3>Quarto Master</h3>
+                        <p>Suíte completa com closet e banheiro privativos</p>
+                        <span class="portfolio-tag">Quarto</span>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <img src="https://via.placeholder.com/400x400/86efac/1e3a0f?text=Garagem+Ampliada" alt="Garagem Ampliada">
+                <div class="portfolio-overlay">
+                    <div class="portfolio-content">
+                        <h3>Garagem Ampliada</h3>
+                        <p>Estrutura para 3 carros com piso aquecido</p>
+                        <span class="portfolio-tag">Ampliação</span>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <img src="https://via.placeholder.com/400x400/86efac/1e3a0f?text=Home+Office" alt="Home Office">
+                <div class="portfolio-overlay">
+                    <div class="portfolio-content">
+                        <h3>Home Office</h3>
+                        <p>Espaço ergonômico com painéis acústicos</p>
+                        <span class="portfolio-tag">Reforma</span>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <img src="https://via.placeholder.com/400x400/86efac/1e3a0f?text=Piscina+Externa" alt="Piscina Externa">
+                <div class="portfolio-overlay">
+                    <div class="portfolio-content">
+                        <h3>Piscina com Deck</h3>
+                        <p>Piscina aquecida com deck em cumaru</p>
+                        <span class="portfolio-tag">Ampliação</span>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <img src="https://via.placeholder.com/400x400/86efac/1e3a0f?text=Sala+Cinema" alt="Sala Cinema">
+                <div class="portfolio-overlay">
+                    <div class="portfolio-content">
+                        <h3>Sala de Cinema</h3>
+                        <p>Home theater com sistema de som surround</p>
+                        <span class="portfolio-tag">Reforma</span>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <img src="https://via.placeholder.com/400x400/86efac/1e3a0f?text=Cozinha+Gourmet" alt="Cozinha Gourmet">
+                <div class="portfolio-overlay">
+                    <div class="portfolio-content">
+                        <h3>Cozinha Gourmet</h3>
+                        <p>Completa com forno de pizza e adega climatizada</p>
+                        <span class="portfolio-tag">Ampliação</span>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <img src="https://via.placeholder.com/400x400/86efac/1e3a0f?text=Closet+Premium" alt="Closet Premium">
+                <div class="portfolio-overlay">
+                    <div class="portfolio-content">
+                        <h3>Closet Premium</h3>
+                        <p>Sistema completo com iluminação LED</p>
+                        <span class="portfolio-tag">Reforma</span>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <img src="https://via.placeholder.com/400x400/86efac/1e3a0f?text=Lavanderia" alt="Lavanderia">
+                <div class="portfolio-overlay">
+                    <div class="portfolio-content">
+                        <h3>Lavanderia Completa</h3>
+                        <p>Espaço funcional com armários planejados</p>
+                        <span class="portfolio-tag">Reforma</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Processo -->
+    <section id="processo" class="process">
+        <h2>Como Funciona Nosso Processo</h2>
+        <div class="process-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Consultoria</h3>
+                <p>Visitamos seu imóvel e entendemos seus desejos e necessidades em detalhes.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Projeto</h3>
+                <p>Desenvolvemos projeto completo em 3D com todas as especificações técnicas.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Orçamento</h3>
+                <p>Apresentamos orçamento detalhado com opções de parcelamento flexíveis.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Execução</h3>
+                <p>Iniciamos a obra com cronograma definido e fiscalização constante.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">5</div>
+                <h3>Acompanhamento</h3>
+                <p>Você acompanha todos os passos da reforma pelo app exclusivo.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">6</div>
+                <h3>Entrega</h3>
+                <p>Obra concluída conforme projeto. Recebimento com garantia inclusa.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Pronto para Transformar Seu Espaço?</h2>
+        <p>Entre em contato conosco e receba uma consultoria gratuita</p>
+        <button class="cta-btn">Solicitar Consultoria Grátis</button>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Empresa</h3>
+                <ul>
+                    <li><a href="#">Sobre Nós</a></li>
+                    <li><a href="#">Nossa História</a></li>
+                    <li><a href="#">Equipe</a></li>
+                    <li><a href="#">Certificações</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Serviços</h3>
+                <ul>
+                    <li><a href="#">Reformas</a></li>
+                    <li><a href="#">Ampliações</a></li>
+                    <li><a href="#">Projetos 3D</a></li>
+                    <li><a href="#">Consultoria</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <ul>
+                    <li><a href="#">Telefone</a></li>
+                    <li><a href="#">Email</a></li>
+                    <li><a href="#">Localização</a></li>
+                    <li><a href="#">Atendimento</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Termos de Uso</a></li>
+                    <li><a href="#">Privacidade</a></li>
+                    <li><a href="#">Cookies</a></li>
+                    <li><a href="#">Segurança</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Reformas e Ampliações. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Interação para portfólio
+        const portfolioCards = document.querySelectorAll('.portfolio-card');
+        
+        portfolioCards.forEach(card => {
+            card.addEventListener('click', function() {
+                portfolioCards.forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Remove active ao clicar fora
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.portfolio-card')) {
+                portfolioCards.forEach(c => c.classList.remove('active'));
+            }
+        });
+    </script>
+</body>
+  </html>
