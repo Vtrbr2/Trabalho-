@@ -1052,3 +1052,19 @@ body {
   color: inherit;
   display: block;
 }
+/* botão estiloso, compacto e neutro */
+.servico-btn{
+  display:inline-block;
+  margin-top:12px;
+  padding:10px 16px;
+  border-radius:12px;
+  border: none;
+  background: rgba(0,0,0,0.08); /* neutro, não altera paleta */
+  backdrop-filter: blur(2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  cursor: pointer;
+  font-weight:600;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.servico-btn:focus{ outline: 3px solid rgba(0,0,0,0.08); outline-offset:2px; }
+.servico-btn:hover{ transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,0.09); }
