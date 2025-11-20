@@ -170,7 +170,7 @@
         
         /* Hero Section */
         .hero-reforms {
-            margin-top: 80px;
+            padding-top: 80px;
             background: linear-gradient(135deg, #3d2d5016 0%, #2d1e3a 100%);
             padding: 8rem 5%;
             text-align: center;
@@ -270,115 +270,101 @@
         }
 
         /* Seção de Portfólio */
-        .portfolio {
+ 
+
+        
+        /* Galeria de Produtos */
+        .gallery {
             padding: 5rem 5%;
-            background: white;
+            background:#F5F5F5;
+           
+         /*   background: #A9A9A9; */
         }
 
-        .portfolio h2 {
-            font-size: 3rem;
+        .gallery h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
             text-align: center;
-            margin-bottom: 1rem;
-            color: #5b21b6;
+            color: #2d2d2d;
         }
 
-        .portfolio-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 4rem;
-        }
-
-        .portfolio-grid {
+        .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        .portfolio-card {
+        .gallery-item {
             position: relative;
-            border-radius: 20px;
+            border-radius: 15px;
             overflow: hidden;
             cursor: pointer;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
             aspect-ratio: 1;
         }
 
-        .portfolio-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 20px 50px rgba(167, 139, 250, 0.3);
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
         }
 
-        .portfolio-card img {
+        .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
         }
 
-        .portfolio-card:hover img {
-            transform: scale(1.15) rotate(2deg);
-            filter: brightness(0.7);
+        .gallery-item:hover img {
+            transform: scale(1.1);
         }
 
-        .portfolio-overlay {
+        .gallery-overlay {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to top, rgba(30, 58, 15, 0.95) 0%, transparent 100%);
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
             display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 2rem;
+            align-items: flex-end;
+            padding: 1.5rem;
             opacity: 0;
-            transition: all 0.4s ease;
-            z-index: 2;
+            transition: all 0.3s ease;
         }
 
-        .portfolio-card:hover .portfolio-overlay,
-        .portfolio-card.active .portfolio-overlay {
+        .gallery-item:hover .gallery-overlay,
+        .gallery-item.active .gallery-overlay {
             opacity: 1;
         }
 
-        .portfolio-content {
+        .gallery-description {
             color: white;
-            transform: translateY(30px);
-            transition: all 0.4s ease;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
         }
 
-        .portfolio-card:hover .portfolio-content,
-        .portfolio-card.active .portfolio-content {
+        .gallery-item:hover .gallery-description,
+        .gallery-item.active .gallery-description {
             transform: translateY(0);
         }
 
-        .portfolio-content h3 {
-            font-size: 1.8rem;
-            margin-bottom: 0.8rem;
-            color: #86efac;
+        .gallery-description h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
         }
 
-        .portfolio-content p {
+        .gallery-description p {
             font-size: 1rem;
-            line-height: 1.6;
-            color: #e0e7ff;
+            line-height: 1.5;
         }
+        
 
-        .portfolio-tag {
-            display: inline-block;
-            background: rgba(34, 197, 94, 0.3);
-            color: #86efac;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin-top: 1rem;
-            border: 1px solid rgba(34, 197, 94, 0.5);
-        }
-
+        
+        
         /* Seção de Processo */
         .process {
             background: linear-gradient(135deg, #f0fdf4 0%, #f7fee7 100%);
