@@ -311,103 +311,47 @@ function _0x53c8() {
 
   <div class="servicos-container">
 
-  <a href="/contr" class="servico-link">
-    <div class="servico-card">
-      <i class="fas fa-home"></i>
-      <h3>Construções Residenciais</h3>
-      <p>Projetos do zero, com segurança e qualidade em cada etapa.</p>
+    <div class="servico-link">
+      <div class="servico-card" data-href="/contr">
+        <i class="fas fa-home"></i>
+        <h3>Construções Residenciais</h3>
+        <p>Projetos do zero, com segurança e qualidade em cada etapa.</p>
+        <button class="servico-btn" type="button" aria-label="Ver Construções Residenciais">Saiba mais</button>
+      </div>
     </div>
-  </a>
 
-  <a href="/obras1" class="servico-link">
-    <div class="servico-card">
-      <i class="fas fa-tools"></i>
-      <h3>Reformas e Ampliações</h3>
-      <p>Transformamos ambientes com acabamento impecável.</p>
+    <div class="servico-link">
+      <div class="servico-card" data-href="/obras1">
+        <i class="fas fa-tools"></i>
+        <h3>Reformas e Ampliações</h3>
+        <p>Transformamos ambientes com acabamento impecável.</p>
+        <button class="servico-btn" type="button" aria-label="Ver Reformas e Ampliações">Saiba mais</button>
+      </div>
     </div>
-  </a>
 
-  <a href="#" class="servico-link">
-  <div class="servico-card">
-    <i class="fas fa-paint-roller"></i>
-    <h3>Pintura e Acabamento</h3>
-    <p>Cores e detalhes que valorizam cada espaço.</p>
+    <div class="servico-link">
+      <div class="servico-card" data-href="/pintura">
+        <i class="fas fa-paint-roller"></i>
+        <h3>Pintura e Acabamento</h3>
+        <p>Cores e detalhes que valorizam cada espaço.</p>
+        <button class="servico-btn" type="button" aria-label="Ver Pintura e Acabamento">Saiba mais</button>
+      </div>
+    </div>
+
+    <div class="servico-link">
+      <div class="servico-card" data-href="/eletrica">
+        <i class="fas fa-bolt"></i>
+        <h3>Elétrica e Hidráulica</h3>
+        <p>Serviços técnicos realizados com total segurança e precisão.</p>
+        <button class="servico-btn" type="button" aria-label="Ver Elétrica e Hidráulica">Saiba mais</button>
+      </div>
+    </div>
+
   </div>
-</a>
+</section>
 
-<a href="#" class="servico-link">
-  <div class="servico-card">
-    <i class="fas fa-bolt"></i>
-    <h3>Elétrica e Hidráulica</h3>
-    <p>Serviços técnicos realizados com total segurança e precisão.</p>
-  </div>
-</a>
 
-  </div>
- </section>   
-    
 
-		<script>
-document.addEventListener('DOMContentLoaded', function () {
-  // Força navegação quando houver <a> pai (captura mesmo com CSS quebrado)
-  document.addEventListener('click', function (ev) {
-    const a = ev.target.closest('a');
-    if (!a) return;
-    // só agir para links dentro da seção de serviços
-    if (!a.closest('.servicos')) return;
-    ev.preventDefault(); // impede comportamento nativo para forçar o nosso
-    const href = a.getAttribute('href') || '';
-    if (href && href !== '#' && href.trim() !== '') {
-      // navega no mesmo tab
-      window.location.href = href;
-    } else {
-      // se for "#" ou vazio, tenta buscar data-href (fallback)
-      const fallback = a.dataset.href || a.querySelector('[data-href]')?.dataset?.href;
-      if (fallback) window.location.href = fallback;
-    }
-  }, true); // use capture para interceptar antes de qualquer handler problemático
-
-  // Torna os .servico-card clicáveis (caso a tag <a> esteja faltando ou CSS bloqueie clique)
-  document.querySelectorAll('.servico-card').forEach(card => {
-    card.style.cursor = 'pointer';
-    // evita dois disparos: se já estiver dentro de <a>, usamos o href dessa <a>
-    card.addEventListener('click', function (ev) {
-      const a = card.closest('a');
-      if (a) {
-        const href = a.getAttribute('href') || '';
-        if (href && href !== '#' && href.trim() !== '') {
-          ev.preventDefault();
-          window.location.href = href;
-          return;
-        }
-        const fallback = a.dataset.href || a.querySelector('[data-href]')?.dataset?.href;
-        if (fallback) {
-          ev.preventDefault();
-          window.location.href = fallback;
-          return;
-        }
-      }
-      // se não tiver <a>, procura um atributo data-href no próprio card
-      const own = card.dataset.href;
-      if (own) {
-        ev.preventDefault();
-        window.location.href = own;
-      }
-    });
-    // permite navegação por teclado (Enter)
-    card.setAttribute('tabindex', 0);
-    card.addEventListener('keydown', function (ev) {
-      if (ev.key === 'Enter' || ev.key === ' ') card.click();
-    });
-  });
-
-  // Força pointer-events caso CSS tenha bloqueado (opcional — comente se não quiser alterar estilos)
-  const container = document.querySelector('.servicos-container');
-  if (container) {
-    container.style.pointerEvents = 'auto';
-  }
-});
-		</script>
 		
    <section class="sobre-nos" id="sobre">
   <div class="sobre-container">
